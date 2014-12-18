@@ -1,4 +1,5 @@
 # a rather rough draft
+#Will add more comments later
 #highest points = weighted value
 
 #import match  <- somebody's job
