@@ -33,6 +33,7 @@ def main():
 	#Region  e.g international
 	#position e.g president
 	#clearly some thing needs to change with regards all the EC variables
+	#also will only take top 5 EC's 
 	
 	print "How was your interview?"
 	print "Excellent, Very Good, Good or Average?"
