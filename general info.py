@@ -1,4 +1,8 @@
-""" Chance Me : To calculate the chances of admission to a specific university 
+""" This contains general info, ideas, and random stream of consciousness thoughts.
+some things may not be well expressed, some things may make no sense.
+
+
+Chance Me : To calculate the chances of admission to a specific university 
 based on a derpload of criteria. NOTE WELL THIS IS A RECREATIONAL TOOL.
 
 Will have to account for different colleges within a school -> 
@@ -90,6 +94,9 @@ it realizes it was too strict in the past or decrease chances if it was too libe
 past. 
 """
 
+"""
+Something i did for lulz.
+
 print "What is your gpa?"
 gpa = float(raw_input("> "))
 
@@ -102,8 +109,9 @@ if (gpa > 3.0) and (sats > 2000):
 else:
 	print "Give up"
 	
-exit(0)
+exit(0)"""
 
+# generalish idea
 class School:
 	pass
 	self.gpa_weight = 20
