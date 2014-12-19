@@ -204,6 +204,11 @@ class School:
 def points_calculator(user, school):
 	user.gpa_points = school.gpa_points[school.gpa_ranking.index(user.gpa)] #somehow need to account 
 	#for the fact that  school.gpa_ranking is a list of lists ...
+	#this is broken for everything except a 4.0 gpa
+	#maybe just use a multiple choice system for user input and let them select a gpa range
+	#dat would make the gpa_ranking a bit easier too and remove the tedious process of 'rangeranking'
+	#e.g ranking =[a, b, c, d, e, f ,g]
+	
 	#find the index i.e ranking of the user gpa.
 	#use that rank as the index in gpa_points 
 	#i.e 4.0 = rank 0 = index 0 = full gpa weight.
