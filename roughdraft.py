@@ -18,22 +18,36 @@ def main():
 	print "You will receive a troll calculation of your acceptance chances"
 	print "What is your name?"
 	name = raw_input("> ")
+	
 	print "\nWhat is your gpa?"
 	gpa = int(float(raw_input("> ")) * 10)
+	
 	print "\nWhat is your SAT1 score?"
 	sat = input("> ")
+	
 	print "\nWhat is your SAT Subject Test score?"
 	sat2 = input("> ")
+	
 	print "\nHow was your letter of recommendations?"
 	print "Excellent, Very Good, Good or Average?"
 	rec = raw_input("> ")
-	print "\nWhat are your ECs"
-	#2 hard 4 me
-	# double list required. 
-	#Region  e.g international
+	print "\nWhat are your top 5 ECs"
+	print "State the Activity followed by your Position followed by the Level"
+	print "For example: chess club,founder,national"
+	count = 0
+	ec_list = []
+	while count <= 4:
+		ec_list[count] = raw_input("What is activity number %d?  >  " %count)
+		count ++
+		
+	
+	#need something involving ec_list[x].split(,) to separate activity, position and level.
+	 
+	#ec has 2 attributes
+	#level  e.g international
 	#position e.g president
 	#clearly some thing needs to change with regards all the EC variables
-	#also will only take top 5 EC's 
+	 
 	
 	print "How was your interview?"
 	print "Excellent, Very Good, Good or Average?"
