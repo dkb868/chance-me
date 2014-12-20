@@ -111,8 +111,8 @@ else:
 
 exit(0)"""
 
-# generalish idea
-class School:
+# old idea
+'''class School:
 	self.gpa_weight = 20
 	self.gpa_reduction_factor = self.gpa_weight/10
 	self.school_gpa_points = [self.gpa_weight, self.gpa_weight - self.gpa_reduction_factor, self.gpa_weight - self.gpa_reduction_factor*2, etc]
@@ -121,7 +121,61 @@ class School:
 	self.gpa_ranking = {4.0 = 0, 3.9 = 1, 3.8 = 1 etc.}
 	self.user_gpa_points = self.school_gpa_points[self.gpa_ranking(user_inputed_gpa)]
 	# a rough idea of how this might work
-	#sum of weights = highest possible points , impossible to actually attain.
+	#sum of weights = highest possible points , impossible to actually attain.'''
+	
+	
+	
+	
+#New Concepts
+
+def casefor():
+	pass
+	#make a case for the candidate
+	#look at all the reasons to accept them
+	#return some value
+	
+def caseagainst():
+	pass
+	#make a case against the candidate
+	#look at all reasons not to accept them
+	#return some value
+	
+
+if casefor >> caseagainst: #>> = far greater, in reality the code would look like if casefor > caseagainst + x 
+#so x will determine exactly what fargreater is
+
+	#there will be a probability of instant acceptance
+	
+elif caseagainst >> casefor:
+	#probability of instant rejection
+	
+else:
+	pass
+	#carry on to the committee.
+	
+class comitteemember:
+	pass
+	
+
+class staff(committeemember):
+	pass
+	#staff members have slightly less weight inthe decision
+
+class director(comitteemember):
+	pass
+	#director of admissions has slightly more weight in the decision.
 
 
-
+def probabilityrange():
+	pass
+	#make a calculation based on casefor and caseagainst to determine a range of probabilties
+	#of a committee member saying yes.
+	
+	
+def committeedecision():
+	pass
+	#if a majority of comittee members say yes gt
+	#or if half say yes and one is the director (assume 4 comitte members)
+	#if not no gt
+	#run a hundred times and find the number of times the person gt
+	#use that as acceptance chnace %?
