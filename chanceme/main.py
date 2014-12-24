@@ -1,17 +1,37 @@
-# a rather rough draft
-#Will add more comments later
-#highest points = weighted value
 
-#import match  <- somebody's job
+#import match  <- somebody's job (created a small example)
+#23/12/2014: fixed extracurriculars and awards 
+#			also created match module
 
 class User:
 	def __init__(self, name, gpa, sat, sat2, rec
-	, interview,awards, classrank, finaid,
+	, interview, awardlist,awardlevels, eclist, eclevels, #ec and awards re-added
+	ecpositions, classrank, finaid, 			
 	international, URM, legacy, ed, firstgen,#externalexams left out
-	employment, commservice, otherach): #user_ec temp removed
-		pass
-	
-		#pls
+	employment, commservice, otherach, ): 
+		
+		self.name = name
+		self.gpa = gpa
+		self.sat = sat
+		self.sat2 = sat2
+		self.rec = rec
+		self.interview = interview
+		self.award_list = awardlist
+		self.award_levels = awardlevels
+		self.ec_list = eclist
+		self.ec_levels = eclevels
+		self.ec_positions = ecpositions
+		self.classrank = classrank
+		self.finaid = finaid
+		self.international = international
+		self.URM = URM
+		self.legacy = legacy
+		self.ed = ed
+		self.firstgen = firstgen
+		self.employment = employment
+		self.commservice = commservice
+		self.otherac = otherach
+		
 	
 def main():
 	print "Welcome to Chance Me Maybe"
@@ -31,6 +51,7 @@ def main():
 	print "\nHow was your letter of recommendations?"
 	print "Excellent, Very Good, Good or Average?"
 	rec = raw_input("> ")
+	'''
 	print "\nWhat are your top 5 ECs"
 	print "State the Activity followed by your Position followed by the Level"
 	print "For example: chess club,founder,national"
@@ -38,27 +59,65 @@ def main():
 	ec_list = []
 	while count <= 4:
 		ec_list[count] = raw_input("What is activity number %d?  >  " %count)
+		count ++'''
+	
+	print "\n Time to input your top 5 Extra-Curriculars"
+	print "You will be asked for the activity, then the level then your position."
+	count = 0
+	ec_list = []
+	ec_levels = []
+	ec_positions = []
+	
+	while count <= 4:
+		print "What is your number %d extracurricular activity?" %(count + 1)
+		ec_list[count] = raw_input("> ")
+		
+		print "\n At what level (International, National, State, City, School) was this EC done?"
+		ec_levels[count] = raw_input("> ")
+		
+		print "\nWhat was your position? (Founder, President, Vice President, Officer, Member)"
+		ec_positions[count] = raw_input("> ")
+		
 		count ++
 		
-	
-	#need something involving ec_list[x].split(,) to separate activity, position and level.
-	 
-	#ec has 2 attributes
-	#level  e.g international
-	#position e.g president
-	#clearly some thing needs to change with regards all the EC variables
+		print "Do you have another extracurricular to report?"
+		answer = raw_input("> ")
+		
+		if answer == "no" or "No":
+			break
+		
+		#loop takes up to 5 extra curriculars as most schools 
+		#only care about the 5 most important
+		#user may break early if they wish
 	 
 	
 	print "How was your interview?"
 	print "Excellent, Very Good, Good or Average?"
 	interview = raw_input("> ")
-	print "\nWhat kind of awards have you won and at what level?"
-	print "International, National, Regional, State, City, School"
-	award = raw_input("> ")
-	#wait that needs to take more than one things.
-	#also need a sentence parser or something to search for the keywords.
-	#rest of their sentence is irrelevant
 	
+	print "Have you won any awards?"
+	answer = raw_input("> ")
+	award_list = []
+	award_levels = []
+	count = 0
+	while answer != "no" or "No":
+		print "What is the name of your award?"
+		award_list[count] = raw_input("> ")
+		#award_list recorded without a real purpose
+		
+		print """What level was this award received at? 
+		(International, National, Regional, State, City, School")"""
+		award_levels[count] = raw_input("> ")
+		#list of levels will be used for point calculation
+
+		print "Nice, do you have any more awards to report?"
+		
+		answer = raw_input("> ")
+		
+		count ++
+		
+	
+
 	#print "What external exam have you done, if any?"
 	#externalname = raw_input("> ")
 	#print "What were your marks on %s" %external
