@@ -1,7 +1,14 @@
 
-#import match  <- somebody's job (created a small example)
-#23/12/2014: fixed extracurriculars and awards 
-#			also created match module
+'''import match  <- somebody's job (created a small example)
+23/12/2014: fixed extracurriculars and awards 
+			also created match module
+25/12/2014: fixed most input, changed to multiple choice letters
+			also fixed  ranking, rangeranking and wordranking deleted
+			made redflags function
+			also merry christmas #nolife
+			
+			'''
+
 
 class User:
 	def __init__(self, name, gpa, sat, sat2, rec
@@ -34,22 +41,33 @@ class User:
 		
 	
 def main():
+	#copypasta this:   print "\n\ta) \n\tb) \n\tc) \n\td) \n\te)"
 	print "Welcome to Chance Me Maybe"
 	print "You will receive a troll calculation of your acceptance chances"
 	print "What is your name?"
 	name = raw_input("> ")
 	
+	print "Hello %s!" %name
+	print "Please answer the questions as accurately as possible."
+	print "Where the question is multiple choice,"
+	print "Please type the letter corresponding to your choice."
+	print "May the force be with you."
+	
 	print "\nWhat is your gpa?"
-	gpa = int(float(raw_input("> ")) * 10)
+	print "\n\ta) 4.0\n\tb) 3.7 - 3.9\n\tc) 3.4 - 3.6\n\td) 3.0 - 3.3\n\te) < 3.0"
+	gpa = raw_input("> ")
 	
 	print "\nWhat is your SAT1 score?"
-	sat = input("> ")
+	print "\n\ta) 2300 - 2400\n\tb) 2200 - 2300\n\tc) 2100 - 2200\n\t(d) 1800- 2000\n\t < 1800"
+	sat = raw_input("> ")
 	
 	print "\nWhat is your SAT Subject Test score?"
-	sat2 = input("> ")
+	print "\n\ta) 780 - 800 \n\tb) 750 - 780 \n\tc) 720 - 760 \n\td) 700- 720 \n\te) <700 "
+	sat2 = raw_input("> ")
 	
 	print "\nHow was your letter of recommendations?"
 	print "Excellent, Very Good, Good or Average?"
+	print "\n\ta) Excellent \n\tb) Very Good \n\tc) Good \n\td) Average \n\te) Below Average"
 	rec = raw_input("> ")
 	'''
 	print "\nWhat are your top 5 ECs"
@@ -70,17 +88,20 @@ def main():
 	
 	while count <= 4:
 		print "What is your number %d extracurricular activity?" %(count + 1)
-		ec_list[count] = raw_input("> ")
+		ec_list[count] = raw_input("> ") #this has no purpose but why not
 		
-		print "\n At what level (International, National, State, City, School) was this EC done?"
+		print "\n At what level was this EC done?"
+		print "\n\ta) International \n\tb) National \n\tc) Regional \n\td) State \n\te) City \n\tf) School"
 		ec_levels[count] = raw_input("> ")
 		
-		print "\nWhat was your position? (Founder, President, Vice President, Officer, Member)"
+		print "\nWhat was your highest position throughout school?"
+		print "\n\ta) Founder \n\tb) President \n\tc)Vice President \n\td)Officer \n\te) Member"
 		ec_positions[count] = raw_input("> ")
 		
+		#need to add category for amount of years spent in EC 
 		count += 1 #apparently ++ doesn't exist in python lol :(
 		
-		print "Do you have another extracurricular to report?"
+		print "Do you have another extracurricular to report? Answer yes or no"
 		answer = raw_input("> ")
 		
 		if answer == "no" or "No":
@@ -92,7 +113,7 @@ def main():
 	 
 	
 	print "How was your interview?"
-	print "Excellent, Very Good, Good or Average?"
+	print "\n\ta) Excellent \n\tb) Very Good \n\tc) Good \n\td) Average \n\te) Below Average"
 	interview = raw_input("> ")
 	
 	print "Have you won any awards?"
@@ -105,8 +126,8 @@ def main():
 		award_list[count] = raw_input("> ")
 		#award_list recorded without a real purpose
 		
-		print """What level was this award received at? 
-		(International, National, Regional, State, City, School")"""
+		print "What level was this award received at?"
+		print "\n\ta) International \n\tb) National \n\tc) Regional \n\td) State \n\te) City \n\tf) School"
 		award_levels[count] = raw_input("> ")
 		#list of levels will be used for point calculation
 
@@ -125,14 +146,18 @@ def main():
 	
 	print "\nWhat was your class rank?"
 	print "Top 5%, Top 10%, Top 30%, Top 50% or Top 100% or School Does Not Rank"
+	print "\n\ta) Top 5% \n\tb) Top 10%  \n\tc) Top 30% \n\td) Top 50% \n\te) School Does Not Rank" 
+	#e is special case that needs to be dealt with
 	classrank = raw_input("> ")
+	if classrank == "e":
+		classrank = None
 	
 	print "\nWill you be applying for financial aid?"
-	print "Yes or no"
+	print "Yes or No"
 	aid = raw_input("> ")
 	
 	print "\nAre you considered an international student?"
-	print "Yes or no"
+	print "Yes or No"
 	international = raw_input("> ")
 	
 	print "\nAre you considered an Underrepresented Minority?"
@@ -147,24 +172,29 @@ def main():
 	print "\nAre you the first generation of your family to attend college?"
 	firstgen = raw_input("> ")
 	
-	print "\nAre you or have you been employed?"
+	print "\nPlease list all your previous employment"
+	# employmentname = raw_input("> ") useless for point calculations
 	print "Full time, part time, summer or no"
+	print "Please state the type of employment"
+	print "\n\ta) Full Time \n\tb) Part Time \n\tc) Summer \n\td) None \n\te)"
+	#this actually needs to be a loop
 	employment = raw_input("> ")
 	
 	print "\nHow much community service hours do you have?"
-	commservice = input("> ")
+	print "\n\ta) 1000 \n\tb) 100 \n\tc) 50 \n\td) 10 \n\te) 0" #dem numbers
+	commservice = raw_input("> ")
 	
 	print "\nDo you have any other accomplishments?"
 	print "Such as creating an international billion dollar corporation?"
 	print "At what level was this accomplishment?"
 	print "And what is your position in the group if applicable?"
 	otheracc = raw_input("> ") #also double list problem , see above.
-	
+	#STEAL EC INPUTTER
 	#match quiz somewhere
 	
 	user1 = User(name, gpa, sat, sat2, rec, interview, award, 
 	classrank, aid , international, URM, legacy, ed, firstgen
-	, employment, commservice, otheracc)
+	, employment, commservice, otheracc) #this needs to be adjusted for new vars + name changes
 	
 
 class School:
@@ -197,7 +227,10 @@ class School:
 		self.otherach_weight = otherach_weight #other achievements
 
 	
-	class wordranking:
+	''' This was serious laziness i realized:
+		also more efficient code was made
+		
+		class wordranking:
 		def __init__(self, wordrank1, wordrank2 ,wordrank3 = 0 ,wordrank4 = 0, wordrank5 = 0,
 		wordrank 6 = 0, wordrank 7 = 0):
 		
@@ -214,6 +247,7 @@ class School:
 	
 		
 		
+	
 	class rangeranking:
 		def __init__(self, highest, range1, range2, range3 = 0,
 		range4 = 0, range5 = 0, range6 = 0, range7 = 0):
@@ -236,63 +270,54 @@ class School:
 			[range(self.range6, self.range5)], [range(self.range7, self.range6)]]
 		
 			#ranking.index(self.highest) etc. to be used later
-			'''
+			
 		
 			n = 1
 			while n < 8:
 				for x in range(rangelist[n], rangelist[n-1]): #can maybe multiply gpa by 10 to solve this problem
 					ranking[x] = n
-				n += 1'''
+				n += 1 '''
 		
 		
 	#making ranking list objects
 	
-	#gpa_ranking = rangeranking(40, 39, 37, 35, 30) #everything multiplied by 10 cuz no floaty points
+	# copypasta this  [a, b, c, d, e]
 	gpa_ranking = [a, b, c, d, e] #using letters for everything now, user well enter a letter corresponding to choice
-	sat_ranking = rangeranking(2400, 2300, 2200,2100, 2000)
+	sat_ranking = [a, b, c, d, e]
 	sat2_ranking = rangeranking(800, 780, 760, 720, 700)
 	rec_ranking = wordranking('Excellent', 'Very Good', 'Good', 'Average')
-	#ec_ranking = wordranking #ec_ranking contains 2 lists and different calculations
+	
+	#ec_ranking =  ec_ranking contains 2 lists and different calculations
 #1 list to get the level of activity eg international and another to get the persons
 #position e.g vice president.	too lazy to do atm
 	
-	interview_ranking = wordranking('Excellent', 'Very Good', 'Good', 'Average')
-	award_ranking = wordranking('International', 'National', 'Regional', 'State',
-	'City', 'School')
+	interview_ranking = [a, b, c, d, e]
+	award_ranking = [a, b, c, d, e]
 	#external_ranking  10+ exams = 10+ grading scales lolno
 	
-	classrank_ranking = wordranking('Top 5%', 'Top 10%', 'Top 30%', 'Top 50%', 'Top 100%')
+	classrank_ranking = [a, b, c, d, e]
 	
-	employment_ranking = wordranking('Full Time', 'Part Time', 'Summer') # can add 2nd list for no. hours, length of time
+	employment_ranking = [a, b, c, d, e] # employment needs hours added to it so incomplete and will require similar calcs as EC list
 	
-	commservice_ranking = rangeranking(100, 50, 10, 0)
+	commservice_ranking =  [a, b, c, d, e]
 	
-	otheracc_ranking = wordranking #another doube list ranking, not sure how to deal with atm.
+	otheracc_ranking = [a, b, c, d, e] # double list, copy concepts of EC 
 	
-	gpa_reduction_factor = self.gpa_weight/10
+'''	gpa_reduction_factor = self.gpa_weight/10
 	gpa_points = [self.gpa_weight, self.gpa_weight - gpa_reduction_factor, 
 	self.gpa_weight - 2 * gpa_reduction_factor, #etc]
+	just make a goddamnlist'''
 	
 	#maybe finda  better way to generate the point lists for everything
 	#using dem loops
 	
-def points_calculator(user, school):
-	user.gpa_points = school.gpa_points[school.gpa_ranking.index(user.gpa)] 
-	
-	#find the index i.e ranking of the user gpa.
-	#use that rank as the index in gpa_points 
-	#i.e 4.0 = a = rank 0 = index 0 = full gpa weight.
-	
-	#etc 
-	
-	#add upp all points and bazinga, moar calculations required to find chances.
-	#actually still need to create the actual chance % calculator algorithm.
+
 	
 def chances_calculator():
 	pass
 	
 
-def firstcheck(user, school):
+def caseagainst(user, school):
 	redflags = 0
 	if user.gpa < school.minimumgpa:
 		redflags += 1
@@ -313,5 +338,27 @@ def firstcheck(user, school):
 	#i.e application sent to dean of admissions for him to decide whether to reject or let candidate go to committee
 	
 	
+def firstread(user, school): '''this is the point calculator
+	 this needs to make a dictionary of points and where they are from
+	would be lovely if that dictionary also sorted points and contributors in descending order 
+	use the pointscalculator dictionary to find the 10 biggest point contributors.
+	because being a member of 100 clubs will never be equal to being leader of internaitonal organization.
+	therefore even though each of those 100 clubs may contribute 2 points fora total of 200.
+	the int'l organizaiton that gives 150 in itself is worth way more to the adcoms'''
+	
+	'''STOLEN FROM OTHER FUNCTION def points_calculator(user, school):
+	user.gpa_points = school.gpa_points[school.gpa_ranking.index(user.gpa)] 
+	
+	#find the index i.e ranking of the user gpa.
+	#use that rank as the index in gpa_points 
+	#i.e 4.0 = a = rank 0 = index 0 = full gpa weight.
+	
+	#etc 
+	
+	#add upp all points and bazinga, moar calculations required to find chances.
+	#actually still need to create the actual chance % calculator algorithm.'''
+	pass
+	
+		
 	
 	
