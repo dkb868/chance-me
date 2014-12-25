@@ -78,7 +78,7 @@ def main():
 		print "\nWhat was your position? (Founder, President, Vice President, Officer, Member)"
 		ec_positions[count] = raw_input("> ")
 		
-		count ++
+		count += 1 #apparently ++ doesn't exist in python lol :(
 		
 		print "Do you have another extracurricular to report?"
 		answer = raw_input("> ")
@@ -169,9 +169,9 @@ def main():
 
 class School:
 	def __init__(self, gpa_weight, sat_weight, sat2_weight, 
-	rec_weight, interview_weight, awards_weight,  #ec_weight temp removed
-	classrank_weight,need_blind, employment_weight, 
-	commservice_weight, otherach_weight): #match_weight
+	rec_weight, interview_weight, awards_weight, eclevel_weight,
+	ecposition_weight,awardlevel_weight, classrank_weight,need_blind, 
+	employment_weight,commservice_weight, otherach_weight): #match_weight
 	
 	#listed all attributes of school.
 	# weights are equal to the points allotted for the achieving the highest rank
@@ -181,14 +181,15 @@ class School:
 		self.sat_weight = sat_weight
 		self.sat2_weight = sat2_weight
 		self.rec_weight = rec_weight #recommendations
-	#	self.ec_weight = ec_weight #extracurriculars
+		self.eclevel_weight = eclevel_weight
+		self.ecposition_weight = ecposition_weight
 		self.interview_weight = interview_weight
 		self.awards_weight = awards_weight
 		#self.match_weight = match_weight
 	
 		#self.externalexams_weight = externalexams_weight  'temporarily' 
 		#omitted as external exams requires a shitload of work for different exams
-		
+		self.awardlevel_weight = awardlevel_weight
 		self.classrank_weight = classrank_weight
 		self.need_blind = need_blind #boolean value. need blind or need aware
 		self.employment_weight = employment_weight
@@ -246,7 +247,8 @@ class School:
 		
 	#making ranking list objects
 	
-	gpa_ranking = rangeranking(40, 39, 37, 35, 30) #everything multiplied by 10 cuz no floaty points
+	#gpa_ranking = rangeranking(40, 39, 37, 35, 30) #everything multiplied by 10 cuz no floaty points
+	gpa_ranking = [a, b, c, d, e] #using letters for everything now, user well enter a letter corresponding to choice
 	sat_ranking = rangeranking(2400, 2300, 2200,2100, 2000)
 	sat2_ranking = rangeranking(800, 780, 760, 720, 700)
 	rec_ranking = wordranking('Excellent', 'Very Good', 'Good', 'Average')
@@ -275,16 +277,11 @@ class School:
 	#using dem loops
 	
 def points_calculator(user, school):
-	user.gpa_points = school.gpa_points[school.gpa_ranking.index(user.gpa)] #somehow need to account 
-	#for the fact that  school.gpa_ranking is a list of lists ...
-	#this is broken for everything except a 4.0 gpa
-	#maybe just use a multiple choice system for user input and let them select a gpa range
-	#dat would make the gpa_ranking a bit easier too and remove the tedious process of 'rangeranking'
-	#e.g ranking =[a, b, c, d, e, f ,g]
+	user.gpa_points = school.gpa_points[school.gpa_ranking.index(user.gpa)] 
 	
 	#find the index i.e ranking of the user gpa.
 	#use that rank as the index in gpa_points 
-	#i.e 4.0 = rank 0 = index 0 = full gpa weight.
+	#i.e 4.0 = a = rank 0 = index 0 = full gpa weight.
 	
 	#etc 
 	
@@ -293,4 +290,28 @@ def points_calculator(user, school):
 	
 def chances_calculator():
 	pass
+	
+
+def firstcheck(user, school):
+	redflags = 0
+	if user.gpa < school.minimumgpa:
+		redflags += 1
+	
+	if user.sat < school.minimumsat:
+		redflags += 1
+		
+	if user.sat2 < school.minimumsat2:
+		redflags += 1
+		
+	if user.classrank < school.minimumclassrank:
+		redflags += 1
+		
+	#etc
+	#essentially, find out the amount of potential red flags the candidate has
+	#red flags severely affect chances of the committee accepting you
+	#in absolute the worst cases, too much redflags can give a chance of instant rejection before committee
+	#i.e application sent to dean of admissions for him to decide whether to reject or let candidate go to committee
+	
+	
+	
 	
