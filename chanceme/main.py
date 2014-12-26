@@ -312,6 +312,7 @@ class School:
 	
 	# copypasta this  [a, b, c, d, e]
 	gpa_ranking = [a, b, c, d, e] #using letters for everything now, user well enter a letter corresponding to choice
+	#using the dictionary method, most of these no longer required.
 	sat_ranking = [a, b, c, d, e]
 	sat2_ranking = [a, b, c, d, e]
 	rec_ranking = [a, b, c, d, e]
@@ -333,17 +334,16 @@ class School:
 	employment_ranking = [a, b, c, d, e] # employment needs hours added to it so incomplete and will require similar calcs as EC list
 	
 	commservice_ranking =  [a, b, c, d, e]
+	#all of these can mayve be made into dictionaries 'a': self.gpa_weight
+	#or make dictionaries like that and just take user input
 	
-	
-'''	gpa_reduction_factor = self.gpa_weight/10
-	gpa_points = [self.gpa_weight, self.gpa_weight - gpa_reduction_factor, 
-	self.gpa_weight - 2 * gpa_reduction_factor, #etc]
-	just make a goddamnlist'''
-	
-	#maybe finda  better way to generate the point lists for everything
-	#using dem loops
-	
-	
+	gpa_points = {'a':self.gpa_weight, 'b': self.gpa_weight/1.1, 'c': self.gpa_weight/1.3,
+	'd':self.gpa_weight/1.5, 'e':self.gpa_weight/2.0} #how the fk to get a good reduction factor
+	#unless each individual school gets its own gpa points list after object is created.
+	#the difference between first two categories should usually be low
+	#bigger difference as we go lower in the categories
+	#now the point calculator can use a simple school.gpa_points[user.gpa]
+	#ec and other double list will require a loop in pointcalculator
 def chances_calculator():
 	pass
 	
