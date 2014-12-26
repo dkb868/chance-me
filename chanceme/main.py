@@ -7,13 +7,22 @@
 			made redflags function
 			also merry christmas #nolife
 			
+			
+25/12/2014: Done: most rankings, main input system. 
+			To do list:
+			point lists
+			match module
+			firstread
+			commitee
+			general cleaning up
 			'''
+		
 
 
 class User:
 	def __init__(self, name, gpa, sat, sat2, rec
 	, interview, awardlist,awardlevels, eclist, eclevels, #ec and awards re-added
-	ecpositions, classrank, finaid, 			
+	otherachlist, otherachlevels, otherachpositions, ecpositions, classrank, finaid, 			
 	international, URM, legacy, ed, firstgen,#externalexams left out
 	employment, commservice, otherach, ): 
 		
@@ -135,7 +144,7 @@ def main():
 		
 		answer = raw_input("> ")
 		
-		count ++
+		count += 1
 		
 	
 
@@ -186,10 +195,30 @@ def main():
 	
 	print "\nDo you have any other accomplishments?"
 	print "Such as creating an international billion dollar corporation?"
-	print "At what level was this accomplishment?"
-	print "And what is your position in the group if applicable?"
-	otheracc = raw_input("> ") #also double list problem , see above.
-	#STEAL EC INPUTTER
+	answer = raw_input("> ") #how much times does 'answer' get assigned to something? :) 
+	otherach_list = []
+	otherach_levels = []
+	otherach_positions = []
+	count = 0
+	while answer != "no" or "No":
+		print "Describe your accomplishment"
+		otherach_list[count] = raw_input("> ")
+		#otheracc_list recorded without a real purpose
+		
+		print "At what level was this accomplishment achieved?"
+		print "\n\ta) International \n\tb) National \n\tc) Regional \n\td) State \n\te) City \n\tf) School"
+		otherach_levels[count] = raw_input("> ")
+		#list of levels will be used for point calculation
+		print "What was your position in this group/competition/etc?"
+		print "\n\ta) Founder \n\tb) Leader \n\tc) Vice President \n\td) Officer \n\te) Member"
+		otherach_positions[count] = raw_input("> ")
+
+		print "Nice, do you have any more awards to report?"
+		
+		answer = raw_input("> ")
+		
+		count += 1
+
 	#match quiz somewhere
 	
 	user1 = User(name, gpa, sat, sat2, rec, interview, award, 
@@ -201,7 +230,7 @@ class School:
 	def __init__(self, gpa_weight, sat_weight, sat2_weight, 
 	rec_weight, interview_weight, awards_weight, eclevel_weight,
 	ecposition_weight,awardlevel_weight, classrank_weight,need_blind, 
-	employment_weight,commservice_weight, otherach_weight): #match_weight
+	employment_weight,commservice_weight, otherachlevels_weight): #match_weight
 	
 	#listed all attributes of school.
 	# weights are equal to the points allotted for the achieving the highest rank
@@ -212,7 +241,7 @@ class School:
 		self.sat2_weight = sat2_weight
 		self.rec_weight = rec_weight #recommendations
 		self.eclevel_weight = eclevel_weight
-		self.ecposition_weight = ecposition_weight
+		self.ecposition_weight = ecposition_weight #points system needs to multiply eclevel by ecpositoonj
 		self.interview_weight = interview_weight
 		self.awards_weight = awards_weight
 		#self.match_weight = match_weight
@@ -224,7 +253,7 @@ class School:
 		self.need_blind = need_blind #boolean value. need blind or need aware
 		self.employment_weight = employment_weight
 		self.commservice_weight = commservice_weight 
-		self.otherach_weight = otherach_weight #other achievements
+		self.otherachlevels_weight = otherach_weight #other achievements
 
 	
 	''' This was serious laziness i realized:
@@ -261,8 +290,8 @@ class School:
 			self.range6 = range6
 			self.range7 = range7
 		
-			'''rangelist = [self.highest, self.range1, self.range2, self.range3,
-			self.range4, self.range5, self.range6, self.range7]'''
+			rangelist = [self.highest, self.range1, self.range2, self.range3,
+			self.range4, self.range5, self.range6, self.range7]
 
 			ranking = [self.highest, [range(self.range1, self.highest)],
 			[range(self.range2,self.range1)], [range(self.range3, self.range2)],
@@ -284,9 +313,13 @@ class School:
 	# copypasta this  [a, b, c, d, e]
 	gpa_ranking = [a, b, c, d, e] #using letters for everything now, user well enter a letter corresponding to choice
 	sat_ranking = [a, b, c, d, e]
-	sat2_ranking = rangeranking(800, 780, 760, 720, 700)
-	rec_ranking = wordranking('Excellent', 'Very Good', 'Good', 'Average')
-	
+	sat2_ranking = [a, b, c, d, e]
+	rec_ranking = [a, b, c, d, e]
+	ec_levels_ranking = [a, b, c, d, e, f]
+	ec_positions_ranking = [a, b, c, d, e]
+	awardlevels_ranking =[a, b, c, d, e]
+	otherach_positions_ranking = [a, b, c, d, e]
+	otherach_levels_ranking = [a, b, c, d, e, f]
 	#ec_ranking =  ec_ranking contains 2 lists and different calculations
 #1 list to get the level of activity eg international and another to get the persons
 #position e.g vice president.	too lazy to do atm
@@ -301,7 +334,6 @@ class School:
 	
 	commservice_ranking =  [a, b, c, d, e]
 	
-	otheracc_ranking = [a, b, c, d, e] # double list, copy concepts of EC 
 	
 '''	gpa_reduction_factor = self.gpa_weight/10
 	gpa_points = [self.gpa_weight, self.gpa_weight - gpa_reduction_factor, 
@@ -311,7 +343,6 @@ class School:
 	#maybe finda  better way to generate the point lists for everything
 	#using dem loops
 	
-
 	
 def chances_calculator():
 	pass

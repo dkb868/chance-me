@@ -1,10 +1,15 @@
 """ This contains general info, ideas, and random stream of consciousness thoughts.
 some things may not be well expressed, some things may make no sense.
 
+so apparently harvard choses the top (~10) people from each region then takes them to committee.
+0% chances for most of the caribbean. fun. If this calc gives all of us 0 we're doing it right
+
 25/12/2014 : Will try to make a post on CC and anywhere else to gather people to participate in a
 survey to test the effectiveness of the app, just out of curiosity.
 Should make clear to them that this makes no money and isn't advertising for my benefit, just an experiment.
-no spamerinos
+no spamerinos 
+I just realized i don't have to even do that, can just use old '2017 decision results' threads
+enter the users infos and see
 
 Chance Me : To calculate the chances of admission to a specific university
 based on a derpload of criteria. NOTE WELL THIS IS A RECREATIONAL TOOL.
