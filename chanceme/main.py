@@ -15,8 +15,13 @@
 			firstread
 			commitee
 			general cleaning up
+			
+27/12/2014: To do:
+			Begin testing.
+			committee function
 			'''
 		
+
 
 
 class User:
@@ -122,7 +127,7 @@ def main():
 	award_list = []
 	award_levels = []
 	count = 0
-	while answer != "no" or "No":
+	while answer != ("no" or "No"):
 		print "What is the name of your award?"
 		award_list[count] = raw_input("> ")
 		#award_list recorded without a real purpose
@@ -316,47 +321,54 @@ def caseagainst(user, school):
 	#i.e application sent to dean of admissions for him to decide whether to reject or let candidate go to committee
 	
 	
-def firstread(user, school): 
-	#now the point calculator can use a simple school.gpa_points[user.gpa]
-	#ec and other double list will require a loop in pointcalculator
-'''this is the point calculator
-	 this needs to make a dictionary of points and where they are from
-	would be lovely if that dictionary also sorted points and contributors in descending order 
-	use the pointscalculator dictionary to find the 10 biggest point contributors.
-	because being a member of 100 clubs will never be equal to being leader of internaitonal organization.
-	therefore even though each of those 100 clubs may contribute 2 points fora total of 200.
-	the int'l organizaiton that gives 150 in itself is worth way more to the adcoms'''
+def firstread(user, school):
 	
-	'''STOLEN FROM OTHER FUNCTION def points_calculator(user, school):
-	user.gpa_points = school.gpa_points[school.gpa_ranking.index(user.gpa)] 
-	
-	#find the index i.e ranking of the user gpa.
-	#use that rank as the index in gpa_points 
-	#i.e 4.0 = a = rank 0 = index 0 = full gpa weight.
-	
-	#etc 
-	
-	#add upp all points and bazinga, moar calculations required to find chances.
-	#actually still need to create the actual chance % calculator algorithm.'''
 	user.gpa_points = school.gpa_points[user.gpa]
 	user.sat_points = school.sat_points[user.sat]
 	uer.sat2_points = school.sat2_points[user.sat2]
 	
 	user.rec_points = school.rec_points[user.rec]
-	'''user.ec_levels_points = school.ec_levels_points[user.rec]
 	
-	user.ec_positions_points = school.ec_positions_points[user.ec+'''
+	#each ec gets a different attribute, for the top 10 thing to make sense
+	user.ec1_points = (school.ec_levels_points[user.ec_levels[0]] *
+	school.ec_positions_points[user.ec_positions[0]])
 	
-	user.awardlevels_points = school.awardlevels_points[user.awardlevels] #list of lists...loop
-	#																	^ that applies to a lot of this
+	user.ec2_points = (school.ec_levels_points[user.ec_levels[1]] *
+	school.ec_positions_points[user.ec_positions[1]])
 	
-	user.otherach_positions_points =  school.otherach_positions_points[user.otherach_positions]
+	user.ec3_points = (school.ec_levels_points[user.ec_levels[2]] *
+	school.ec_positions_points[user.ec_positions[2]])
 	
-	user.otherach_levels_points =  school.otherach_levels_points[user.otherach_levels]
+	user.ec4_points = (school.ec_levels_points[user.ec_levels[3]] *
+	school.ec_positions_points[user.ec_positions[3]])
+	
+	user.ec5_points = (school.ec_levels_points[user.ec_levels[4]] *
+	school.ec_positions_points[user.ec_positions[4]])
+	
+	#user can now only submit 5 awards
+	user.award1_points = school.awardlevels_points[user.awardlevels[0]]
+	user.award2_points = school.awardlevels_points[user.awardlevels[1]]
+	user.award3_points = school.awardlevels_points[user.awardlevels[2]]
+	user.award4_points = school.awardlevels_points[user.awardlevels[3]]
+	user.award5_points = school.awardlevels_points[user.awardlevels[4]]
+		
+	user.otherach1_points = (school.otherach_positions_points[user.otherach_positions[0]] *
+	school.ec_positions_points[user.ec_positions[0]])
+	
+	user.otherach2_points = (school.otherach_positions_points[user.otherach_positions[1]] *
+	school.otherach_levels_points[user.otherach_levels[1]])
+	
+	user.otherach3_points = (school.otherach_positions_points[user.otherach_positions[2]] *
+	school.otherach_levels_points[user.otherach_levels[2]])
+	
+	user.otherach4_points = (school.otherach_positions_points[user.otherach_positions[3]] *
+	school.otherach_levels_points[user.otherach_levels[3]])
+	
+	user.otherach5_points = (school.otherach_positions_points[user.otherach_positions[4]] *
+	school.otherach_levels_points[user.otherach_levels[4]])
+	
 	
 	user.interview_points =  school.interview_points[user.interview]
-
-	user.award_points = school.award_points[user.award]
 
 	user.classrank_points = school.classrank_points[user.classrank]
 
@@ -364,4 +376,28 @@ def firstread(user, school):
 
 	user.commservice_points =  school.commservice_points[user.commservice]
 	
-	pointlist = [user.gpa_points, #etc]
+	user.pointlist = [user.gpa_points, user.sat_points, uer.sat2_points,
+	user.rec_points, user.ec1_points, user.ec2_points,
+	user.ec3_points, user.ec4_points,
+	user.ec5_points, user.award1_points,
+	user.award2_points, user.award3_points, 
+	user.award4_points, user.award5_points, 
+	user.otherach1_points, user.otherach2_points, 
+	user.otherach3_points, user.otherach4_points, 
+	user.otherach5_points, user.interview_points,  
+	user.classrank_points, user.employment_points, 
+	user.commservice_points 
+	]
+	
+	
+	user.descending_pointlist = sorted(pointlist reverse=True)
+	
+	user.toptenlist = descending_pointlist[:10]
+	
+	
+def committee(user, school):
+	if school.name == 'Harvard':
+		print "You are rejected"
+	
+	else:
+		print "You are still rejected"

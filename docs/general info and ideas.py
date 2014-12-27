@@ -215,6 +215,29 @@ def probabilityrange():
 	#make a calculation based on casefor and caseagainst to determine a range of probabilties
 	#of a committee member saying yes.
 	
+def firstread(user, school): 
+	#now the point calculator can use a simple school.gpa_points[user.gpa]
+	#ec and other double list will require a loop in pointcalculator
+'''this is the point calculator
+	 this needs to make a dictionary of points and where they are from
+	would be lovely if that dictionary also sorted points and contributors in descending order 
+	use the pointscalculator dictionary to find the 10 biggest point contributors.
+	because being a member of 100 clubs will never be equal to being leader of internaitonal organization.
+	therefore even though each of those 100 clubs may contribute 2 points fora total of 200.
+	the int'l organizaiton that gives 150 in itself is worth way more to the adcoms'''
+	
+	'''STOLEN FROM OTHER FUNCTION def points_calculator(user, school):
+	user.gpa_points = school.gpa_points[school.gpa_ranking.index(user.gpa)] 
+	
+	#find the index i.e ranking of the user gpa.
+	#use that rank as the index in gpa_points 
+	#i.e 4.0 = a = rank 0 = index 0 = full gpa weight.
+	
+	#etc 
+	
+	#add upp all points and bazinga, moar calculations required to find chances.
+	#actually still need to create the actual chance % calculator algorithm.'''
+	
 	
 def committeedecision():
 	pass
