@@ -1,5 +1,40 @@
 """ This contains general info, ideas, and random stream of consciousness thoughts.
 some things may not be well expressed, some things may make no sense.
+----------------------------------------------------------
+27/12/14 new ideas:
+so adcoms don't want people with only academics. They want people who are involved
+in and our of the calssroom.
+Therfore the reader should see how much of the top 10 point contributors are academic
+and how much are not. Too much academic r not good. in fact, what if at a certain point
+academics was meaningless.
+That's how MIT admission works after all. If the user scores are good enuf they are no longer
+a part of the admission process.
+i.e only the firstreader actually sees your academics and determines it to be good enough.
+maybe gpa and sat should just be weighted extremely lower.
+or certain gpas give 0 and bad gpas give -ve points
+WTF WHAT IF IT USES THE TOP 10 THINGS THAT ARENT ACADEMIC.
+Then this would truly be unlike any other admission chances calculator
+
+"No one can give you a meaningful chance extimation:
+Because the factors of admissions readily apprehended in a forum post (GPA, SAT. etc.)
+are in many ways the least important in our process - MITChris
+
+"But once students have demonstrated academic prepardness, then the additional returns
+acrrued by marginal increases in academic performance diminsh markedly" - MITChris
+
+Should gpa points be completely deleted and just have the firstread check
+that the person is academically capable?
+Should it change depending on the school?
+class HighlySelective(school) ?
+
+"AdmissionSplash may be more accurate at some schools than at others, depending on their
+selectivity, competitiveness, and how their admission process works. But if you're thinking
+of applying to selective schools , please do not pay attention to these sites" - MITChris
+
+Many things to consider moving forward (all quotes taken from a post MITChris made criticizing
+a facebook app which does exactly what this program does. Use them for guidance)
+-----------------------------------------------------------------------------
+
 
 so apparently harvard choses the top (~10) people from each region then takes them to committee.
 0% chances for most of the caribbean. fun. If this calc gives all of us 0 we're doing it right

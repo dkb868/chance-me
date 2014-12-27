@@ -78,15 +78,7 @@ def main():
 	print "Excellent, Very Good, Good or Average?"
 	print "\n\ta) Excellent \n\tb) Very Good \n\tc) Good \n\td) Average \n\te) Below Average"
 	rec = raw_input("> ")
-	'''
-	print "\nWhat are your top 5 ECs"
-	print "State the Activity followed by your Position followed by the Level"
-	print "For example: chess club,founder,national"
-	count = 0
-	ec_list = []
-	while count <= 4:
-		ec_list[count] = raw_input("What is activity number %d?  >  " %count)
-		count ++'''
+	
 	
 	print "\n Time to input your top 5 Extra-Curriculars"
 	print "You will be asked for the activity, then the level then your position."
@@ -182,11 +174,9 @@ def main():
 	firstgen = raw_input("> ")
 	
 	print "\nPlease list all your previous employment"
-	# employmentname = raw_input("> ") useless for point calculations
-	print "Full time, part time, summer or no"
 	print "Please state the type of employment"
 	print "\n\ta) Full Time \n\tb) Part Time \n\tc) Summer \n\td) None \n\te)"
-	#this actually needs to be a loop
+	#this actually needs to be a loop and needs to include work hours i.e doube list like EC
 	employment = raw_input("> ")
 	
 	print "\nHow much community service hours do you have?"
@@ -232,16 +222,15 @@ class School:
 	ecposition_weight,awardlevel_weight, classrank_weight,need_blind, 
 	employment_weight,commservice_weight, otherachlevels_weight): #match_weight
 	
-	#listed all attributes of school.
 	# weights are equal to the points allotted for the achieving the highest rank
 	#in that category. i.e gpa_weight = the points for a 4.0 gpa.
 	
 		self.gpa_weight = gpa_weight
 		self.sat_weight = sat_weight
 		self.sat2_weight = sat2_weight
-		self.rec_weight = rec_weight #recommendations
+		self.rec_weight = rec_weight 
 		self.eclevel_weight = eclevel_weight
-		self.ecposition_weight = ecposition_weight #points system needs to multiply eclevel by ecpositoonj
+		self.ecposition_weight = ecposition_weight 
 		self.interview_weight = interview_weight
 		self.awards_weight = awards_weight
 		#self.match_weight = match_weight
@@ -256,101 +245,59 @@ class School:
 		self.otherachlevels_weight = otherach_weight #other achievements
 
 	
-	''' This was serious laziness i realized:
-		also more efficient code was made
-		
-		class wordranking:
-		def __init__(self, wordrank1, wordrank2 ,wordrank3 = 0 ,wordrank4 = 0, wordrank5 = 0,
-		wordrank 6 = 0, wordrank 7 = 0):
-		
-			self.wordrank1 = wordrank1 
-			self.wordrank2 = wordrank2
-			self.wordrank3 = wordrank3
-			self.wordrank4 = wordrank4
-			self.wordrank5 = wordrank5
-			self.wordrank6 = wordrank6
-			self.wordrank7 = wordrank7
-		
-			ranking = [self.wordrank1, self.wordrank2, self.wordrank3, self.wordrank4,
-			self.wordrank5, self.wordrank6, self.wordrank7]
-	
-		
-		
-	
-	class rangeranking:
-		def __init__(self, highest, range1, range2, range3 = 0,
-		range4 = 0, range5 = 0, range6 = 0, range7 = 0):
-		
-			self.highest = highest 
-			self.range1 = range1
-			self.range2 = range2
-			self.range3 = range3
-			self.range4 = range4
-			self.range5 = range5
-			self.range6 = range6
-			self.range7 = range7
-		
-			rangelist = [self.highest, self.range1, self.range2, self.range3,
-			self.range4, self.range5, self.range6, self.range7]
 
-			ranking = [self.highest, [range(self.range1, self.highest)],
-			[range(self.range2,self.range1)], [range(self.range3, self.range2)],
-			[range(self.range4, self.range3)], [range(self.range5, self.range4)],
-			[range(self.range6, self.range5)], [range(self.range7, self.range6)]]
 		
-			#ranking.index(self.highest) etc. to be used later
-			
-		
-			n = 1
-			while n < 8:
-				for x in range(rangelist[n], rangelist[n-1]): #can maybe multiply gpa by 10 to solve this problem
-					ranking[x] = n
-				n += 1 '''
-		
-		
-	#making ranking list objects
-	
-	# copypasta this  [a, b, c, d, e]
-	gpa_ranking = [a, b, c, d, e] #using letters for everything now, user well enter a letter corresponding to choice
-	#using the dictionary method, most of these no longer required.
-	sat_ranking = [a, b, c, d, e]
-	sat2_ranking = [a, b, c, d, e]
-	rec_ranking = [a, b, c, d, e]
-	ec_levels_ranking = [a, b, c, d, e, f]
-	ec_positions_ranking = [a, b, c, d, e]
-	awardlevels_ranking =[a, b, c, d, e]
-	otherach_positions_ranking = [a, b, c, d, e]
-	otherach_levels_ranking = [a, b, c, d, e, f]
-	#ec_ranking =  ec_ranking contains 2 lists and different calculations
-#1 list to get the level of activity eg international and another to get the persons
-#position e.g vice president.	too lazy to do atm
-	
-	interview_ranking = [a, b, c, d, e]
-	award_ranking = [a, b, c, d, e]
-	#external_ranking  10+ exams = 10+ grading scales lolno
-	
-	classrank_ranking = [a, b, c, d, e]
-	
-	employment_ranking = [a, b, c, d, e] # employment needs hours added to it so incomplete and will require similar calcs as EC list
-	
-	commservice_ranking =  [a, b, c, d, e]
-	#all of these can mayve be made into dictionaries 'a': self.gpa_weight
-	#or make dictionaries like that and just take user input
+	#attack of the dictionaries incoming
 	
 	gpa_points = {'a':self.gpa_weight, 'b': self.gpa_weight/1.1, 'c': self.gpa_weight/1.3,
-	'd':self.gpa_weight/1.5, 'e':self.gpa_weight/2.0} #how the fk to get a good reduction factor
-	#unless each individual school gets its own gpa points list after object is created.
-	#the difference between first two categories should usually be low
-	#bigger difference as we go lower in the categories
-	#now the point calculator can use a simple school.gpa_points[user.gpa]
-	#ec and other double list will require a loop in pointcalculator
-def chances_calculator():
-	pass
+	'd':self.gpa_weight/1.5, 'e':self.gpa_weight/2.0} #reduction factor may need improvements later
+
+	sat_points = {'a':self.sat_weight, 'b':self.sat_weight/1.1, 'c': self.gpa_weight/1.3,
+	'd':self.sat_weight/1.5, 'e':self.sat_weight/2.0}
+	
+	sat2_points = {'a':self.sat2_weight, 'b':self.sat2_weight/1.1, 'c':self.sat2_weight/1.3, 
+	'd':self.sat2_weight/1.5, 'e':self.sat2_weight/2.0}
+	
+	rec_points = {'a':self.rec_weight, 'b':self.rec_weight/1.1, 'c':self.rec_weight/1.3, 
+	'd':self.rec_weight/1.5, 'e':self.rec_weight/2.0}
+	
+	ec_levels_points = {'a':self.ec_levels_weight, 'b':self.ec_levels_weight/1.1, 'c':self.ec_levels_weight/1.3, 
+	'd':self.ec_levels_weight/1.5, 'e':self.ec_levels_weight/2.0,'f':self.ec_levels_weight/3.0}
+	
+	ec_positions_points = {'a':self.ec_positions_weight, 'b':self.ec_positions_weight/1.1, 'c':self.ec_positions_weight/1.3, 
+	'd':self.ec_positions_weight/1.5, 'e':self.ec_positions_weight/2.0}
+	
+	awardlevels_points ={'a':self.awardlevels_weight, 'b':self.awardlevels_weight/1.1, 'c':self.awardlevels_weight/1.3, 
+	'd':self.awardlevels_weight/1.5, 'e':self.awardlevels_weight/2.0}
+	
+	otherach_positions_points = {'a':self.otherach_positions_weight, 'b':self.otherach_positions_weight/1.1, 'c':self.otherach_positions_weight/1.3, 
+	'd':self.otherach_positions_weight/1.5, 'e':self.otherach_positions_weight/2.0}
+	
+	otherach_levels_points = {'a':self.otherach_levels_weight, 'b':self.otherach_levels_weight/1.1, 'c':self.otherach_levels_weight/1.3, 
+	'd':self.otherach_levels_weight/1.5, 'e':self.otherach_levels_weight/2.0,'f':self.otherach_levels_weight/3.0}
+	
+	interview_points = {'a':self.interview_weight, 'b':self.interview_weight/1.1, 'c':self.interview_weight/1.3, 
+	'd':self.interview_weight/1.5, 'e':self.interview_weight/2.0}
+
+	award_points = {'a':self.award_weight, 'b':self.award_weight/1.1, 'c':self.award_weight/1.3, 
+	'd':self.award_weight/1.5, 'e':self.award_weight/2.0}
+
+	classrank_points = {'a':self.classrank_weight, 'b':self.classrank_weight/1.1, 'c':self.classrank_weight/1.3, 
+	'd':self.classrank_weight/1.5, 'e':self.classrank_weight/2.0}
+
+	employment_points = {'a':self.employment_weight, 'b':self.employment_weight/1.1, 'c':self.employment_weight/1.3, 
+	'd':self.employment_weight/1.5, 'e':self.employment_weight/2.0}
+	# employment needs hours added to it so incomplete and will require similar calcs as EC list
+
+	commservice_points =  {'a':self.commservice_weight, 'b':self.commservice_weight/1.1, 'c':self.commservice_weight/1.3, 
+	'd':self.commservice_weight/1.5, 'e':self.commservice_weight/2.0}
+	
+
 	
 
 def caseagainst(user, school):
 	redflags = 0
-	if user.gpa < school.minimumgpa:
+	if user.gpa < school.minimumgpa: #school.minimumgpa doesn't exist yet :O
 		redflags += 1
 	
 	if user.sat < school.minimumsat:
@@ -369,7 +316,10 @@ def caseagainst(user, school):
 	#i.e application sent to dean of admissions for him to decide whether to reject or let candidate go to committee
 	
 	
-def firstread(user, school): '''this is the point calculator
+def firstread(user, school): 
+	#now the point calculator can use a simple school.gpa_points[user.gpa]
+	#ec and other double list will require a loop in pointcalculator
+'''this is the point calculator
 	 this needs to make a dictionary of points and where they are from
 	would be lovely if that dictionary also sorted points and contributors in descending order 
 	use the pointscalculator dictionary to find the 10 biggest point contributors.
@@ -388,8 +338,30 @@ def firstread(user, school): '''this is the point calculator
 	
 	#add upp all points and bazinga, moar calculations required to find chances.
 	#actually still need to create the actual chance % calculator algorithm.'''
-	pass
+	user.gpa_points = school.gpa_points[user.gpa]
+	user.sat_points = school.sat_points[user.sat]
+	uer.sat2_points = school.sat2_points[user.sat2]
 	
-		
+	user.rec_points = school.rec_points[user.rec]
+	'''user.ec_levels_points = school.ec_levels_points[user.rec]
 	
+	user.ec_positions_points = school.ec_positions_points[user.ec+'''
 	
+	user.awardlevels_points = school.awardlevels_points[user.awardlevels] #list of lists...loop
+	#																	^ that applies to a lot of this
+	
+	user.otherach_positions_points =  school.otherach_positions_points[user.otherach_positions]
+	
+	user.otherach_levels_points =  school.otherach_levels_points[user.otherach_levels]
+	
+	user.interview_points =  school.interview_points[user.interview]
+
+	user.award_points = school.award_points[user.award]
+
+	user.classrank_points = school.classrank_points[user.classrank]
+
+	user.employment_points = school.employment_points[user.employment]
+
+	user.commservice_points =  school.commservice_points[user.commservice]
+	
+	pointlist = [user.gpa_points, #etc]
