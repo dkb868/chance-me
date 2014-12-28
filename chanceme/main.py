@@ -222,80 +222,81 @@ def main():
 	
 
 class School:
-	def __init__(self, gpa_weight, sat_weight, sat2_weight, 
-	rec_weight, interview_weight, awards_weight, eclevel_weight,
-	ecposition_weight,awardlevel_weight, classrank_weight,need_blind, 
-	employment_weight,commservice_weight, otherachlevels_weight): #match_weight
+	def __init__(self,name, gpa_weight, sat_weight, sat2_weight, 
+	rec_weight, interview_weight, eclevels_weight,
+	ecpositions_weight,awardlevels_weight, classrank_weight,need_blind, 
+	employment_weight,commservice_weight, otherach_levels_weight,
+	otherach_positions_weight): #match_weight
 	
 	# weights are equal to the points allotted for the achieving the highest rank
 	#in that category. i.e gpa_weight = the points for a 4.0 gpa.
 	
+		self.name = name
 		self.gpa_weight = gpa_weight
 		self.sat_weight = sat_weight
 		self.sat2_weight = sat2_weight
 		self.rec_weight = rec_weight 
-		self.eclevel_weight = eclevel_weight
-		self.ecposition_weight = ecposition_weight 
+		self.ec_levels_weight = eclevels_weight
+		self.ec_positions_weight = ecpositions_weight 
 		self.interview_weight = interview_weight
-		self.awards_weight = awards_weight
+		self.awardlevels_weight = awardlevels_weight
 		#self.match_weight = match_weight
 	
 		#self.externalexams_weight = externalexams_weight  'temporarily' 
 		#omitted as external exams requires a shitload of work for different exams
-		self.awardlevel_weight = awardlevel_weight
+
 		self.classrank_weight = classrank_weight
 		self.need_blind = need_blind #boolean value. need blind or need aware
 		self.employment_weight = employment_weight
 		self.commservice_weight = commservice_weight 
-		self.otherachlevels_weight = otherach_weight #other achievements
+		self.otherach_levels_weight = otherach_levels_weight #other achievements
+		self.otherach_positions_weight = otherach_positions_weight
 
 	
 
 		
 	#attack of the dictionaries incoming
 	
-	gpa_points = {'a':self.gpa_weight, 'b': self.gpa_weight/1.1, 'c': self.gpa_weight/1.3,
-	'd':self.gpa_weight/1.5, 'e':self.gpa_weight/2.0} #reduction factor may need improvements later
+		gpa_points = {'a':self.gpa_weight, 'b': self.gpa_weight/1.1, 'c': self.gpa_weight/1.3,
+		'd':self.gpa_weight/1.5, 'e':self.gpa_weight/2.0} #reduction factor may need improvements later
 
-	sat_points = {'a':self.sat_weight, 'b':self.sat_weight/1.1, 'c': self.gpa_weight/1.3,
-	'd':self.sat_weight/1.5, 'e':self.sat_weight/2.0}
+		sat_points = {'a':self.sat_weight, 'b':self.sat_weight/1.1, 'c': self.gpa_weight/1.3,
+		'd':self.sat_weight/1.5, 'e':self.sat_weight/2.0}
 	
-	sat2_points = {'a':self.sat2_weight, 'b':self.sat2_weight/1.1, 'c':self.sat2_weight/1.3, 
-	'd':self.sat2_weight/1.5, 'e':self.sat2_weight/2.0}
+		sat2_points = {'a':self.sat2_weight, 'b':self.sat2_weight/1.1, 'c':self.sat2_weight/1.3, 
+		'd':self.sat2_weight/1.5, 'e':self.sat2_weight/2.0}
 	
-	rec_points = {'a':self.rec_weight, 'b':self.rec_weight/1.1, 'c':self.rec_weight/1.3, 
-	'd':self.rec_weight/1.5, 'e':self.rec_weight/2.0}
+		rec_points = {'a':self.rec_weight, 'b':self.rec_weight/1.1, 'c':self.rec_weight/1.3, 
+		'd':self.rec_weight/1.5, 'e':self.rec_weight/2.0}
 	
-	ec_levels_points = {'a':self.ec_levels_weight, 'b':self.ec_levels_weight/1.1, 'c':self.ec_levels_weight/1.3, 
-	'd':self.ec_levels_weight/1.5, 'e':self.ec_levels_weight/2.0,'f':self.ec_levels_weight/3.0}
+		ec_levels_points = {'a':self.ec_levels_weight, 'b':self.ec_levels_weight/1.1, 'c':self.ec_levels_weight/1.3, 
+		'd':self.ec_levels_weight/1.5, 'e':self.ec_levels_weight/2.0,'f':self.ec_levels_weight/3.0}
 	
-	ec_positions_points = {'a':self.ec_positions_weight, 'b':self.ec_positions_weight/1.1, 'c':self.ec_positions_weight/1.3, 
-	'd':self.ec_positions_weight/1.5, 'e':self.ec_positions_weight/2.0}
+		ec_positions_points = {'a':self.ec_positions_weight, 'b':self.ec_positions_weight/1.1, 'c':self.ec_positions_weight/1.3, 
+		'd':self.ec_positions_weight/1.5, 'e':self.ec_positions_weight/2.0}
 	
-	awardlevels_points ={'a':self.awardlevels_weight, 'b':self.awardlevels_weight/1.1, 'c':self.awardlevels_weight/1.3, 
-	'd':self.awardlevels_weight/1.5, 'e':self.awardlevels_weight/2.0}
+		awardlevels_points ={'a':self.awardlevels_weight, 'b':self.awardlevels_weight/1.1, 'c':self.awardlevels_weight/1.3, 
+		'd':self.awardlevels_weight/1.5, 'e':self.awardlevels_weight/2.0}
 	
-	otherach_positions_points = {'a':self.otherach_positions_weight, 'b':self.otherach_positions_weight/1.1, 'c':self.otherach_positions_weight/1.3, 
-	'd':self.otherach_positions_weight/1.5, 'e':self.otherach_positions_weight/2.0}
+		otherach_positions_points = {'a':self.otherach_positions_weight, 'b':self.otherach_positions_weight/1.1, 'c':self.otherach_positions_weight/1.3, 
+		'd':self.otherach_positions_weight/1.5, 'e':self.otherach_positions_weight/2.0}
+		
+		otherach_levels_points = {'a':self.otherach_levels_weight, 'b':self.otherach_levels_weight/1.1, 'c':self.otherach_levels_weight/1.3, 
+		'd':self.otherach_levels_weight/1.5, 'e':self.otherach_levels_weight/2.0,'f':self.otherach_levels_weight/3.0}
 	
-	otherach_levels_points = {'a':self.otherach_levels_weight, 'b':self.otherach_levels_weight/1.1, 'c':self.otherach_levels_weight/1.3, 
-	'd':self.otherach_levels_weight/1.5, 'e':self.otherach_levels_weight/2.0,'f':self.otherach_levels_weight/3.0}
-	
-	interview_points = {'a':self.interview_weight, 'b':self.interview_weight/1.1, 'c':self.interview_weight/1.3, 
-	'd':self.interview_weight/1.5, 'e':self.interview_weight/2.0}
+		interview_points = {'a':self.interview_weight, 'b':self.interview_weight/1.1, 'c':self.interview_weight/1.3, 
+		'd':self.interview_weight/1.5, 'e':self.interview_weight/2.0}
 
-	award_points = {'a':self.award_weight, 'b':self.award_weight/1.1, 'c':self.award_weight/1.3, 
-	'd':self.award_weight/1.5, 'e':self.award_weight/2.0}
 
-	classrank_points = {'a':self.classrank_weight, 'b':self.classrank_weight/1.1, 'c':self.classrank_weight/1.3, 
-	'd':self.classrank_weight/1.5, 'e':self.classrank_weight/2.0}
+		classrank_points = {'a':self.classrank_weight, 'b':self.classrank_weight/1.1, 'c':self.classrank_weight/1.3, 
+		'd':self.classrank_weight/1.5, 'e':self.classrank_weight/2.0}
 
-	employment_points = {'a':self.employment_weight, 'b':self.employment_weight/1.1, 'c':self.employment_weight/1.3, 
-	'd':self.employment_weight/1.5, 'e':self.employment_weight/2.0}
+		employment_points = {'a':self.employment_weight, 'b':self.employment_weight/1.1, 'c':self.employment_weight/1.3, 
+		'd':self.employment_weight/1.5, 'e':self.employment_weight/2.0}
 	# employment needs hours added to it so incomplete and will require similar calcs as EC list
 
-	commservice_points =  {'a':self.commservice_weight, 'b':self.commservice_weight/1.1, 'c':self.commservice_weight/1.3, 
-	'd':self.commservice_weight/1.5, 'e':self.commservice_weight/2.0}
+		commservice_points =  {'a':self.commservice_weight, 'b':self.commservice_weight/1.1, 'c':self.commservice_weight/1.3, 
+		'd':self.commservice_weight/1.5, 'e':self.commservice_weight/2.0}
 	
 
 	
@@ -390,7 +391,7 @@ def firstread(user, school):
 	]
 	
 	
-	user.descending_pointlist = sorted(pointlist reverse=True)
+	user.descending_pointlist = sorted(pointlist, reverse=True)
 	
 	user.toptenlist = descending_pointlist[:10]
 	
