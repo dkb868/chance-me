@@ -223,10 +223,10 @@ def main():
 
 class School:
 	def __init__(self,name, gpa_weight, sat_weight, sat2_weight, 
-	rec_weight, interview_weight, eclevels_weight,
-	ecpositions_weight,awardlevels_weight, classrank_weight,need_blind, 
+	rec_weight, interview_weight, ec_levels_weight,
+	ec_positions_weight,awardlevels_weight, classrank_weight,need_blind, 
 	employment_weight,commservice_weight, otherach_levels_weight,
-	otherach_positions_weight): #match_weight
+	otherach_positions_weight,minimumgpa,minimumsat,minimumsat2,minimumclassrank): #match_weight
 	
 	# weights are equal to the points allotted for the achieving the highest rank
 	#in that category. i.e gpa_weight = the points for a 4.0 gpa.
@@ -236,8 +236,8 @@ class School:
 		self.sat_weight = sat_weight
 		self.sat2_weight = sat2_weight
 		self.rec_weight = rec_weight 
-		self.ec_levels_weight = eclevels_weight
-		self.ec_positions_weight = ecpositions_weight 
+		self.ec_levels_weight = ec_levels_weight
+		self.ec_positions_weight = ec_positions_weight 
 		self.interview_weight = interview_weight
 		self.awardlevels_weight = awardlevels_weight
 		#self.match_weight = match_weight
@@ -251,7 +251,10 @@ class School:
 		self.commservice_weight = commservice_weight 
 		self.otherach_levels_weight = otherach_levels_weight #other achievements
 		self.otherach_positions_weight = otherach_positions_weight
-
+		self.minimumgpa = minimumgpa
+		self.minimumsat = minimumsat
+		self.minimumsat2 = minimumsat2
+		self.minimumclassrank = minimumclassrank
 	
 
 		
