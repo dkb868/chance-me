@@ -30,10 +30,12 @@ def test_school():
 	assert_equal(Harvard.minimumclassrank, 0)
 	
 	
-Jem = User(name = "Jem", gpa = -1, sat = 'a', sat2 = 'a', rec = 'a'
-	, interview = 'a', award_list = [0],award_levels = [0], ec_list = [0],
-	ec_levels = [0], otherachlist = [0], otherach_levels = [0],
-	otherach_positions = [0], ec_positions = [0], 
+Jem = User(name = "Jem", gpa = "a", sat = 'a', sat2 = 'a', rec = 'a'
+	, interview = 'a', award_list = ['a','a','a','a','a'],award_levels = ['a','a','a','a','a'], 
+	ec_list = ['a','a','a','a','a'],
+	ec_levels = ['a','a','a','a','a'], otherachlist = ['a','a','a','a','a'],
+	otherach_levels = ['a','a','a','a','a'],
+	otherach_positions = ['a','a','a','a','a'], ec_positions = ['a','a','a','a','a'], 
 	classrank = 'a', finaid = False, 			
 	international = False , URM = False, 
 	legacy = False , ed = False, 
@@ -43,19 +45,19 @@ Jem = User(name = "Jem", gpa = -1, sat = 'a', sat2 = 'a', rec = 'a'
 def test_user():
 	
 	assert_equal(Jem.name, "Jem")
-	assert_equal(Jem.gpa, -1)
+	assert_equal(Jem.gpa, "a")
 	assert_equal(Jem.sat, "a")
 	assert_equal(Jem.sat2, "a")
 	assert_equal(Jem.rec, "a")
 	assert_equal(Jem.interview, "a")
-	assert_equal(Jem.award_list, [0])
-	assert_equal(Jem.award_levels, [0])
-	assert_equal(Jem.ec_list, [0])
-	assert_equal(Jem.ec_levels, [0])
-	assert_equal(Jem.otherachlist, [0])
-	assert_equal(Jem.otherach_levels, [0])
-	assert_equal(Jem.otherach_positions, [0])
-	assert_equal(Jem.ec_positions, [0])
+	assert_equal(Jem.award_list, ['a','a','a','a','a'])
+	assert_equal(Jem.award_levels, ['a','a','a','a','a'])
+	assert_equal(Jem.ec_list, ['a','a','a','a','a'])
+	assert_equal(Jem.ec_levels, ['a','a','a','a','a'])
+	assert_equal(Jem.otherachlist, ['a','a','a','a','a'])
+	assert_equal(Jem.otherach_levels, ['a','a','a','a','a'])
+	assert_equal(Jem.otherach_positions, ['a','a','a','a','a'])
+	assert_equal(Jem.ec_positions, ['a','a','a','a','a'])
 	assert_equal(Jem.classrank, "a")
 	assert_equal(Jem.finaid, False)
 	assert_equal(Jem.international, False)
@@ -67,6 +69,12 @@ def test_user():
 	assert_equal(Jem.commservice, "a")
 	
 	
-def test_case_against():
+def test_caseagainst():
 	caseagainst(Jem, Harvard)
-	assert_equal(Jem.redflags, 1)
+	assert_equal(Jem.redflags, 0)
+	
+def test_firstread():
+	firstread(Jem, Harvard)
+	
+	assert_equal(1, 1)
+	
