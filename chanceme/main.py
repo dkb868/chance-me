@@ -26,22 +26,22 @@
 
 class User:
 	def __init__(self, name, gpa, sat, sat2, rec
-	, interview, awardlist,awardlevels, eclist, eclevels, #ec and awards re-added
-	otherachlist, otherachlevels, otherachpositions, ecpositions, classrank, finaid, 			
-	international, URM, legacy, ed, firstgen,#externalexams left out
-	employment, commservice, otherach, ): 
-		
+	, interview, award_list,award_levels, ec_list, ec_levels, 
+	otherachlist, otherach_levels, otherach_positions, ec_positions, classrank, finaid, 			
+	international, URM, legacy, ed, firstgen,
+	employment, commservice): 
+		#externalexams left out
 		self.name = name
 		self.gpa = gpa
 		self.sat = sat
 		self.sat2 = sat2
 		self.rec = rec
 		self.interview = interview
-		self.award_list = awardlist
-		self.award_levels = awardlevels
-		self.ec_list = eclist
-		self.ec_levels = eclevels
-		self.ec_positions = ecpositions
+		self.award_list = award_list
+		self.award_levels = award_levels
+		self.ec_list = ec_list
+		self.ec_levels = ec_levels
+		self.ec_positions = ec_positions
 		self.classrank = classrank
 		self.finaid = finaid
 		self.international = international
@@ -51,7 +51,10 @@ class User:
 		self.firstgen = firstgen
 		self.employment = employment
 		self.commservice = commservice
-		self.otherac = otherach
+		self.otherach_levels = otherach_levels
+		self.otherach_positions = otherach_positions
+		self.otherachlist = otherachlist
+		self.redflags = 0
 		
 	
 def main():
@@ -305,18 +308,18 @@ class School:
 	
 
 def caseagainst(user, school):
-	redflags = 0
+
 	if user.gpa < school.minimumgpa: #school.minimumgpa doesn't exist yet :O
-		redflags += 1
+		user.redflags += 1
 	
 	if user.sat < school.minimumsat:
-		redflags += 1
+		user.redflags += 1
 		
 	if user.sat2 < school.minimumsat2:
-		redflags += 1
+		user.redflags += 1
 		
 	if user.classrank < school.minimumclassrank:
-		redflags += 1
+		user.redflags += 1
 		
 	#etc
 	#essentially, find out the amount of potential red flags the candidate has

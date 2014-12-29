@@ -30,5 +30,43 @@ def test_school():
 	assert_equal(Harvard.minimumclassrank, 0)
 	
 	
+Jem = User(name = "Jem", gpa = -1, sat = 'a', sat2 = 'a', rec = 'a'
+	, interview = 'a', award_list = [0],award_levels = [0], ec_list = [0],
+	ec_levels = [0], otherachlist = [0], otherach_levels = [0],
+	otherach_positions = [0], ec_positions = [0], 
+	classrank = 'a', finaid = False, 			
+	international = False , URM = False, 
+	legacy = False , ed = False, 
+	firstgen = False ,
+	employment = 'a', commservice = 'a')
 
-
+def test_user():
+	
+	assert_equal(Jem.name, "Jem")
+	assert_equal(Jem.gpa, -1)
+	assert_equal(Jem.sat, "a")
+	assert_equal(Jem.sat2, "a")
+	assert_equal(Jem.rec, "a")
+	assert_equal(Jem.interview, "a")
+	assert_equal(Jem.award_list, [0])
+	assert_equal(Jem.award_levels, [0])
+	assert_equal(Jem.ec_list, [0])
+	assert_equal(Jem.ec_levels, [0])
+	assert_equal(Jem.otherachlist, [0])
+	assert_equal(Jem.otherach_levels, [0])
+	assert_equal(Jem.otherach_positions, [0])
+	assert_equal(Jem.ec_positions, [0])
+	assert_equal(Jem.classrank, "a")
+	assert_equal(Jem.finaid, False)
+	assert_equal(Jem.international, False)
+	assert_equal(Jem.URM, False)
+	assert_equal(Jem.legacy, False)
+	assert_equal(Jem.ed, False)
+	assert_equal(Jem.firstgen, False)
+	assert_equal(Jem.employment, "a")
+	assert_equal(Jem.commservice, "a")
+	
+	
+def test_case_against():
+	caseagainst(Jem, Harvard)
+	assert_equal(Jem.redflags, 1)
