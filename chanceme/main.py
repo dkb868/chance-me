@@ -361,7 +361,7 @@ def firstread(user, school):
 	user.award5_points = school.awardlevels_points[user.award_levels[4]]
 		
 	user.otherach1_points = (school.otherach_positions_points[user.otherach_positions[0]] *
-	school.ec_positions_points[user.ec_positions[0]])
+	school.otherach_levels_points[user.otherach_levels[0]])
 	
 	user.otherach2_points = (school.otherach_positions_points[user.otherach_positions[1]] *
 	school.otherach_levels_points[user.otherach_levels[1]])
