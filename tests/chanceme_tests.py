@@ -113,3 +113,8 @@ def test_firstread():
 	Jem.commservice_points 
 	])
 	
+	assert_equal(Jem.toptenlist, [Jem.otherach1_points, Jem.otherach2_points, 
+	Jem.otherach3_points, Jem.otherach4_points, 
+	Jem.otherach5_points,Jem.ec1_points, Jem.ec2_points,
+	Jem.ec3_points,Jem.ec4_points,
+	Jem.ec5_points])
