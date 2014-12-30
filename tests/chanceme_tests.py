@@ -100,3 +100,16 @@ def test_firstread():
 	assert_equal(Jem.employment_points, 100)
 	assert_equal(Jem.commservice_points, 1000)
 	
+	assert_equal(Jem.pointlist, [Jem.gpa_points, Jem.sat_points, Jem.sat2_points,
+	Jem.rec_points, Jem.ec1_points, Jem.ec2_points,
+	Jem.ec3_points,Jem.ec4_points,
+	Jem.ec5_points, Jem.award1_points,
+	Jem.award2_points, Jem.award3_points, 
+	Jem.award4_points, Jem.award5_points, 
+	Jem.otherach1_points, Jem.otherach2_points, 
+	Jem.otherach3_points, Jem.otherach4_points, 
+	Jem.otherach5_points, Jem.interview_points,  
+	Jem.classrank_points, Jem.employment_points, 
+	Jem.commservice_points 
+	])
+	
