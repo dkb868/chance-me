@@ -97,15 +97,15 @@ def main():
 	
 	while count <= 4:
 		print "What is your number %d extracurricular activity?" %(count + 1)
-		ec_list[count] = raw_input("> ") #this has no purpose but why not
+		ec_list.append(raw_input("> ")) #this has no purpose but why not
 		
 		print "\n At what level was this EC done?"
 		print "\n\ta) International \n\tb) National \n\tc) Regional \n\td) State \n\te) City \n\tf) School"
-		ec_levels[count] = raw_input("> ")
+		ec_levels.append(raw_input("> "))
 		
 		print "\nWhat was your highest position throughout school?"
 		print "\n\ta) Founder \n\tb) President \n\tc)Vice President \n\td)Officer \n\te) Member"
-		ec_positions[count] = raw_input("> ")
+		ec_positions.append(raw_input("> "))
 		
 		#need to add category for amount of years spent in EC 
 		count += 1 #apparently ++ doesn't exist in python lol :(
@@ -132,12 +132,12 @@ def main():
 	count = 0
 	while answer != ("no" or "No"):
 		print "What is the name of your award?"
-		award_list[count] = raw_input("> ")
+		award_list.append(raw_input("> "))
 		#award_list recorded without a real purpose
 		
 		print "What level was this award received at?"
 		print "\n\ta) International \n\tb) National \n\tc) Regional \n\td) State \n\te) City \n\tf) School"
-		award_levels[count] = raw_input("> ")
+		award_levels.append(raw_input("> "))
 		#list of levels will be used for point calculation
 
 		print "Nice, do you have any more awards to report?"
@@ -160,7 +160,7 @@ def main():
 	classrank = raw_input("> ")
 	if classrank == "e":
 		classrank = None
-	
+	#fix that. idk
 	print "\nWill you be applying for financial aid?"
 	print "Yes or No"
 	aid = raw_input("> ")
@@ -198,18 +198,18 @@ def main():
 	otherach_levels = []
 	otherach_positions = []
 	count = 0
-	while answer != "no" or "No":
+	while answer != ("no" or "No"):
 		print "Describe your accomplishment"
-		otherach_list[count] = raw_input("> ")
+		otherach_list.append(raw_input("> "))
 		#otheracc_list recorded without a real purpose
 		
 		print "At what level was this accomplishment achieved?"
 		print "\n\ta) International \n\tb) National \n\tc) Regional \n\td) State \n\te) City \n\tf) School"
-		otherach_levels[count] = raw_input("> ")
+		otherach_levels.append(raw_input("> "))
 		#list of levels will be used for point calculation
 		print "What was your position in this group/competition/etc?"
 		print "\n\ta) Founder \n\tb) Leader \n\tc) Vice President \n\td) Officer \n\te) Member"
-		otherach_positions[count] = raw_input("> ")
+		otherach_positions.append(raw_input("> "))
 
 		print "Nice, do you have any more awards to report?"
 		
@@ -409,3 +409,5 @@ def committee(user, school):
 	
 	else:
 		print "You are still rejected"
+		
+main()
