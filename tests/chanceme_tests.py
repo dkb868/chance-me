@@ -5,7 +5,7 @@ Harvard = School(name = 'Harvard University', gpa_weight=2000, sat_weight=1000, 
 	rec_weight=900, interview_weight=500, ec_levels_weight=500,
 	ec_positions_weight=900,awardlevels_weight=500, classrank_weight=200,need_blind=True, 
 	employment_weight=100,commservice_weight=1000, otherach_levels_weight=5000,otherach_positions_weight = 100
-	,minimumgpa=0,minimumsat=0,minimumsat2=0,minimumclassrank=0)
+	,minimumgpa=0,minimumsat=0,minimumsat2=0,minimumclassrank=0,idealsum=5000000)
 	
 def test_school():
 	
@@ -28,6 +28,7 @@ def test_school():
 	assert_equal(Harvard.minimumsat, 0)
 	assert_equal(Harvard.minimumsat2, 0)
 	assert_equal(Harvard.minimumclassrank, 0)
+	assert_equal(Harvard.idealsum, 5000000.0)
 	
 	
 Jem = User(name = "Jem", gpa = "a", sat = 'a', sat2 = 'a', rec = 'a'
@@ -118,3 +119,11 @@ def test_firstread():
 	Jem.otherach5_points,Jem.ec1_points, Jem.ec2_points,
 	Jem.ec3_points,Jem.ec4_points,
 	Jem.ec5_points])
+	
+	assert_equal(Jem.toptensum, 4750000)
+	
+def test_committee():
+	firstread(Jem, Harvard)
+	committee(Jem, Harvard)
+	
+	assert_equal(Jem.chancedecimal, 0.95)

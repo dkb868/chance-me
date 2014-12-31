@@ -229,7 +229,7 @@ class School:
 	rec_weight, interview_weight, ec_levels_weight,
 	ec_positions_weight,awardlevels_weight, classrank_weight,need_blind, 
 	employment_weight,commservice_weight, otherach_levels_weight,
-	otherach_positions_weight,minimumgpa,minimumsat,minimumsat2,minimumclassrank): #match_weight
+	otherach_positions_weight,minimumgpa,minimumsat,minimumsat2,minimumclassrank,idealsum): #match_weight
 	
 	# weights are equal to the points allotted for the achieving the highest rank
 	#in that category. i.e gpa_weight = the points for a 4.0 gpa.
@@ -258,6 +258,7 @@ class School:
 		self.minimumsat = minimumsat
 		self.minimumsat2 = minimumsat2
 		self.minimumclassrank = minimumclassrank
+		self.idealsum = idealsum
 	
 
 		
@@ -402,12 +403,49 @@ def firstread(user, school):
 	
 	user.toptenlist = user.descending_pointlist[:10]
 	
+	user.toptensum = 0.0
+	for number in user.toptenlist:
+		user.toptensum += number
+		
+	
+	
 	
 def committee(user, school):
-	if school.name == 'Harvard':
+		
+		user.chancedecimal = user.toptensum/school.idealsum
+		user.chancepercent = user.chancedecimal * 100
+		print "You have %f chance of acceptance" %user.chancepercent
+		
+		return user.chancepercent
+		#very dumbed down version. just to play with.
+
+'''if school.name == 'Harvard'
 		print "You are rejected"
 	
 	else:
 		print "You are still rejected"
+	
+	probability = user.points / idealpoints  #ideal candidate needs to be defined 
+	
+	if randomnumber < probability:
+		voteyes
 		
-main()
+	else:
+		voteno
+		
+	if voteyes:
+		probability of convincg other commite member = 50%
+		
+		
+		
+what if the committee arguing process is printed to the user for lulz.
+'Your firstreader argues in the committee that you have 'top10list' going for you.
+commitee member 1 votes no
+2 votes no
+3 votes yes
+4 votes yes
+5 votes yes
+
+gt life.
+
+Run simulation 100 times and see how many times accepted'''
