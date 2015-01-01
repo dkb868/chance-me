@@ -1,6 +1,15 @@
 """ This contains general info, ideas, and random stream of consciousness thoughts.
 some things may not be well expressed, some things may make no sense.
 ----------------------------------------------------------
+31/12/2014
+new ideas: probability should be calculated based on 'idealstudent'. and 'idealstudent' should be calculated based
+on the median or average of accepted students points. take data from chancemethreads and find the totalpoints of accepted 
+people and find avg/med and base probabilites off that #seemslegit.
+
+
+
+
+
 27/12/14 new ideas:
 so adcoms don't want people with only academics. They want people who are involved
 in and our of the calssroom.

@@ -125,5 +125,4 @@ def test_firstread():
 def test_committee():
 	firstread(Jem, Harvard)
 	committee(Jem, Harvard)
-	
 	assert_equal(Jem.chancedecimal, 0.95)

@@ -59,10 +59,14 @@ class User:
 	
 def main():
 	#copypasta this:   print "\n\ta) \n\tb) \n\tc) \n\td) \n\te)"
+	answers = ['a', 'b', 'c', 'd' ,'e', 'f']
+	
+		
 	print "Welcome to Chance Me Maybe"
 	print "You will receive a troll calculation of your acceptance chances"
 	print "What is your name?"
 	name = raw_input("> ")
+
 	
 	print "Hello %s!" %name
 	print "Please answer the questions as accurately as possible."
@@ -70,9 +74,12 @@ def main():
 	print "Please type the letter corresponding to your choice."
 	print "May the force be with you."
 	
+	
 	print "\nWhat is your gpa?"
 	print "\n\ta) 4.0\n\tb) 3.7 - 3.9\n\tc) 3.4 - 3.6\n\td) 3.0 - 3.3\n\te) < 3.0"
 	gpa = raw_input("> ")
+	if gpa not in answers:
+		raise ValueError("Choose A B C D E OR F CAN YOU NOT READ?")
 	
 	print "\nWhat is your SAT1 score?"
 	print "\n\ta) 2300 - 2400\n\tb) 2200 - 2300\n\tc) 2100 - 2200\n\t(d) 1800- 2000\n\t < 1800"
@@ -113,7 +120,7 @@ def main():
 		print "Do you have another extracurricular to report? Answer yes or no"
 		answer = raw_input("> ")
 		
-		if answer == "no" or "No":
+		if answer == ("no" or "No"):
 			break
 		
 		#loop takes up to 5 extra curriculars as most schools 
@@ -219,11 +226,15 @@ def main():
 
 	#match quiz somewhere
 	
-	user1 = User(name, gpa, sat, sat2, rec, interview, award, 
-	classrank, aid , international, URM, legacy, ed, firstgen
-	, employment, commservice, otheracc) #this needs to be adjusted for new vars + name changes
-	
 
+	user1 = User(name, gpa, sat, sat2, rec
+	, interview, award_list,award_levels, ec_list, ec_levels, 
+	otherach_list, otherach_levels, otherach_positions, ec_positions, classrank, aid, 			
+	international, URM, legacy, ed, firstgen,
+	employment, commservice)
+	
+	firstread(user1, Harvard)
+	committee(user1, Harvard)
 class School:
 	def __init__(self,name, gpa_weight, sat_weight, sat2_weight, 
 	rec_weight, interview_weight, ec_levels_weight,
@@ -330,73 +341,75 @@ def caseagainst(user, school):
 	
 	
 def firstread(user, school):
+	user.pointlist = []
+	#most broken function ever. user has 1 award. broken. 1 ec broken no otherachievements broken. wtf.
+
+	user.pointlist.append(school.gpa_points[user.gpa])
 	
-	user.gpa_points = school.gpa_points[user.gpa]
-	user.sat_points = school.sat_points[user.sat]
-	user.sat2_points = school.sat2_points[user.sat2]
+	user.pointlist.append(school.sat_points[user.sat])
+	user.pointlist.append(school.sat2_points[user.sat2])
 	
-	user.rec_points = school.rec_points[user.rec]
+	user.pointlist.append(school.rec_points[user.rec])
 	
 	#each ec gets a different attribute, for the top 10 thing to make sense
 	#what if user has less than 5? -_- broken code is broken
-	user.ec1_points = (school.ec_levels_points[user.ec_levels[0]] *
-	school.ec_positions_points[user.ec_positions[0]])
 	
-	user.ec2_points = (school.ec_levels_points[user.ec_levels[1]] *
-	school.ec_positions_points[user.ec_positions[1]])
+
+	try:
+		user.pointlist.append((school.ec_levels_points[user.ec_levels[0]] *
+		school.ec_positions_points[user.ec_positions[0]]))
 	
-	user.ec3_points = (school.ec_levels_points[user.ec_levels[2]] *
-	school.ec_positions_points[user.ec_positions[2]])
+		user.pointlist.append((school.ec_levels_points[user.ec_levels[1]] *
+		school.ec_positions_points[user.ec_positions[1]]))
+
+		user.pointlist.append((school.ec_levels_points[user.ec_levels[2]] *
+		school.ec_positions_points[user.ec_positions[2]]))
+
+		uuser.pointlist.append((school.ec_levels_points[user.ec_levels[3]] *
+		school.ec_positions_points[user.ec_positions[3]]))
 	
-	user.ec4_points = (school.ec_levels_points[user.ec_levels[3]] *
-	school.ec_positions_points[user.ec_positions[3]])
+		user.pointlist.append((school.ec_levels_points[user.ec_levels[4]] *
+		school.ec_positions_points[user.ec_positions[4]]))
 	
-	user.ec5_points = (school.ec_levels_points[user.ec_levels[4]] *
-	school.ec_positions_points[user.ec_positions[4]])
-	
+	except: 
+		pass
 	#user can now only submit 5 awards
-	user.award1_points = school.awardlevels_points[user.award_levels[0]]
-	user.award2_points = school.awardlevels_points[user.award_levels[1]]
-	user.award3_points = school.awardlevels_points[user.award_levels[2]]
-	user.award4_points = school.awardlevels_points[user.award_levels[3]]
-	user.award5_points = school.awardlevels_points[user.award_levels[4]]
+	try:
+		user.pointlist.append(school.awardlevels_points[user.award_levels[0]])
+		user.pointlist.append(school.awardlevels_points[user.award_levels[1]])
+		user.pointlist.append(school.awardlevels_points[user.award_levels[2]])
+		user.pointlist.append(school.awardlevels_points[user.award_levels[3]])
+		user.pointlist.append(school.awardlevels_points[user.award_levels[4]])
 		
-	user.otherach1_points = (school.otherach_positions_points[user.otherach_positions[0]] *
-	school.otherach_levels_points[user.otherach_levels[0]])
+	except:
+		pass
+		
+	try:
+		user.pointlist.append((school.otherach_positions_points[user.otherach_positions[0]] *
+		school.otherach_levels_points[user.otherach_levels[0]]))
 	
-	user.otherach2_points = (school.otherach_positions_points[user.otherach_positions[1]] *
-	school.otherach_levels_points[user.otherach_levels[1]])
+		user.pointlist.append((school.otherach_positions_points[user.otherach_positions[1]] *
+		school.otherach_levels_points[user.otherach_levels[1]]))
 	
-	user.otherach3_points = (school.otherach_positions_points[user.otherach_positions[2]] *
-	school.otherach_levels_points[user.otherach_levels[2]])
+		user.pointlist.append((school.otherach_positions_points[user.otherach_positions[2]] *
+		school.otherach_levels_points[user.otherach_levels[2]]))
 	
-	user.otherach4_points = (school.otherach_positions_points[user.otherach_positions[3]] *
-	school.otherach_levels_points[user.otherach_levels[3]])
+		user.pointlist.append((school.otherach_positions_points[user.otherach_positions[3]] *
+		school.otherach_levels_points[user.otherach_levels[3]]))
 	
-	user.otherach5_points = (school.otherach_positions_points[user.otherach_positions[4]] *
-	school.otherach_levels_points[user.otherach_levels[4]])
+		user.pointlist.append((school.otherach_positions_points[user.otherach_positions[4]] *
+		school.otherach_levels_points[user.otherach_levels[4]]))
 	
+	except:
+		pass
 	
-	user.interview_points =  school.interview_points[user.interview]
+	user.pointlist.append(school.interview_points[user.interview])
 
-	user.classrank_points = school.classrank_points[user.classrank]
+	user.pointlist.append(school.classrank_points[user.classrank])
 
-	user.employment_points = school.employment_points[user.employment]
+	user.pointlist.append(school.employment_points[user.employment])
 
-	user.commservice_points =  school.commservice_points[user.commservice]
-	
-	user.pointlist = [user.gpa_points, user.sat_points, user.sat2_points,
-	user.rec_points, user.ec1_points, user.ec2_points,
-	user.ec3_points, user.ec4_points,
-	user.ec5_points, user.award1_points,
-	user.award2_points, user.award3_points, 
-	user.award4_points, user.award5_points, 
-	user.otherach1_points, user.otherach2_points, 
-	user.otherach3_points, user.otherach4_points, 
-	user.otherach5_points, user.interview_points,  
-	user.classrank_points, user.employment_points, 
-	user.commservice_points 
-	]
+	user.pointlist.append(school.commservice_points[user.commservice])
 	
 	
 	user.descending_pointlist = sorted(user.pointlist, reverse=True)
@@ -414,7 +427,7 @@ def committee(user, school):
 		
 		user.chancedecimal = user.toptensum/school.idealsum
 		user.chancepercent = user.chancedecimal * 100
-		print "You have %f chance of acceptance" %user.chancepercent
+		print "You have %f % chance of acceptance" %user.chancepercent
 		
 		return user.chancepercent
 		#very dumbed down version. just to play with.
@@ -449,3 +462,11 @@ commitee member 1 votes no
 gt life.
 
 Run simulation 100 times and see how many times accepted'''
+
+Harvard = School(name = 'Harvard University', gpa_weight=2000, sat_weight=1000, sat2_weight=1500, 
+	rec_weight=900, interview_weight=500, ec_levels_weight=500,
+	ec_positions_weight=500,awardlevels_weight=3000, classrank_weight=200,need_blind=True, 
+	employment_weight=100,commservice_weight=1000, otherach_levels_weight=500,otherach_positions_weight = 500
+	,minimumgpa=0,minimumsat=0,minimumsat2=0,minimumclassrank=0,idealsum=5000000)
+	
+main()
