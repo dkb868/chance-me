@@ -188,11 +188,24 @@ def main():
 	print "\nAre you the first generation of your family to attend college?"
 	firstgen = raw_input("> ")
 	
-	print "\nPlease list all your previous employment"
-	print "Please state the type of employment"
-	print "\n\ta) Full Time \n\tb) Part Time \n\tc) Summer \n\td) None \n\te)"
-	#this actually needs to be a loop and needs to include work hours i.e doube list like EC
-	employment = raw_input("> ")
+	print "Have you had any previous employment?"
+	answer = raw_input("> ")
+	employment_type = []
+	employment_list = []
+	while answer != ('no' or 'No'):
+		print "Please state the type of employment"
+		print "\n\ta) Full Time \n\tb) Part Time \n\tc) Summer \n\td) None \n\te)"
+		#this actually needs to be a loop and needs to include work hours i.e doube list like EC
+		employment_type = raw_input("> ")
+		print "Please state the amount of hours per week you had to work."
+		print "pass" ##lazy
+		employment_hours = raw_inpu("> ")
+		print "Do you have any more employment to report?"
+		answer = raw_input("> ")
+		
+		
+		
+		
 	
 	print "\nHow much community service hours do you have?"
 	print "\n\ta) 1000 \n\tb) 100 \n\tc) 50 \n\td) 10 \n\te) 0" #dem numbers
@@ -403,11 +416,22 @@ def firstread(user, school):
 	except:
 		pass
 	
-	user.pointlist.append(school.interview_points[user.interview])
-
-	user.pointlist.append(school.classrank_points[user.classrank])
-
-	user.pointlist.append(school.employment_points[user.employment])
+	try:
+		user.pointlist.append(school.interview_points[user.interview])
+		
+	except:
+		pass
+		
+	try:
+		user.pointlist.append(school.classrank_points[user.classrank])
+	except:
+		pass
+		
+	try:
+		user.pointlist.append(school.employment_points[user.employment])
+	except:
+		pass
+		# add in option f'no employment' or something turn empolyment into loop
 
 	user.pointlist.append(school.commservice_points[user.commservice])
 	
