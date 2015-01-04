@@ -25,11 +25,12 @@
 
 
 class User:
-	def __init__(self, name, gpa, sat, sat2, rec
-	, interview, award_list,award_levels, ec_list, ec_levels, 
-	otherachlist, otherach_levels, otherach_positions, ec_positions, classrank, finaid, 			
-	international, URM, legacy, ed, firstgen,
-	employment, commservice): 
+	def __init__(self, name, gpa, sat, sat2, rec,
+				interview, award_list,award_levels, ec_list, ec_levels, 
+				otherachlist, otherach_levels, otherach_positions,
+				ec_positions, classrank, finaid, 			
+				international, URM, legacy, ed, firstgen,
+				employment, commservice): 
 		#externalexams left out
 		self.name = name
 		self.gpa = gpa
@@ -240,20 +241,25 @@ def main():
 	#match quiz somewhere
 	
 
-	user1 = User(name, gpa, sat, sat2, rec
-	, interview, award_list,award_levels, ec_list, ec_levels, 
-	otherach_list, otherach_levels, otherach_positions, ec_positions, classrank, aid, 			
-	international, URM, legacy, ed, firstgen,
-	employment, commservice)
+	user1 = User(name, gpa, sat, sat2, rec,
+				interview, award_list,award_levels, ec_list, ec_levels, 
+				otherach_list, otherach_levels, otherach_positions, 
+				ec_positions, classrank, aid, 			
+				international, URM, legacy, ed, firstgen,
+				employment, commservice)
 	
 	firstread(user1, Harvard)
 	committee(user1, Harvard)
+	
+	
 class School:
 	def __init__(self,name, gpa_weight, sat_weight, sat2_weight, 
-	rec_weight, interview_weight, ec_levels_weight,
-	ec_positions_weight,awardlevels_weight, classrank_weight,need_blind, 
-	employment_weight,commservice_weight, otherach_levels_weight,
-	otherach_positions_weight,minimumgpa,minimumsat,minimumsat2,minimumclassrank,idealsum): #match_weight
+				rec_weight, interview_weight, ec_levels_weight,
+				ec_positions_weight,awardlevels_weight,
+				classrank_weight,need_blind, 
+				employment_weight,commservice_weight, otherach_levels_weight,
+				otherach_positions_weight,minimumgpa
+				,minimumsat,minimumsat2,minimumclassrank,idealsum): #match_weight
 	
 	# weights are equal to the points allotted for the achieving the highest rank
 	#in that category. i.e gpa_weight = the points for a 4.0 gpa.
@@ -288,17 +294,21 @@ class School:
 		
 	#attack of the dictionaries incoming
 	
-		self.gpa_points = {'a':self.gpa_weight, 'b': self.gpa_weight/1.1, 'c': self.gpa_weight/1.3,
-		'd':self.gpa_weight/1.5, 'e':self.gpa_weight/2.0} #reduction factor may need improvements later
+		self.gpa_points = {'a':self.gpa_weight, 'b': self.gpa_weight/1.1, 
+						   'c': self.gpa_weight/1.3,
+						   'd':self.gpa_weight/1.5, 'e':self.gpa_weight/2.0} #reduction factor may need improvements later
 
-		self.sat_points = {'a':self.sat_weight, 'b':self.sat_weight/1.1, 'c': self.gpa_weight/1.3,
-		'd':self.sat_weight/1.5, 'e':self.sat_weight/2.0}
+		self.sat_points = {'a':self.sat_weight, 'b':self.sat_weight/1.1,
+						   'c': self.gpa_weight/1.3,
+		                   'd':self.sat_weight/1.5, 'e':self.sat_weight/2.0}
 	
-		self.sat2_points = {'a':self.sat2_weight, 'b':self.sat2_weight/1.1, 'c':self.sat2_weight/1.3, 
-		'd':self.sat2_weight/1.5, 'e':self.sat2_weight/2.0}
+		self.sat2_points = {'a':self.sat2_weight, 'b':self.sat2_weight/1.1, 
+							'c':self.sat2_weight/1.3, 
+							'd':self.sat2_weight/1.5, 'e':self.sat2_weight/2.0}
 	
-		self.rec_points = {'a':self.rec_weight, 'b':self.rec_weight/1.1, 'c':self.rec_weight/1.3, 
-		'd':self.rec_weight/1.5, 'e':self.rec_weight/2.0}
+		self.rec_points = {'a':self.rec_weight, 'b':self.rec_weight/1.1,
+						   'c':self.rec_weight/1.3, 
+						   'd':self.rec_weight/1.5, 'e':self.rec_weight/2.0}
 	
 		self.ec_levels_points = {'a':self.ec_levels_weight, 'b':self.ec_levels_weight/1.1, 'c':self.ec_levels_weight/1.3, 
 		'd':self.ec_levels_weight/1.5, 'e':self.ec_levels_weight/2.0,'f':self.ec_levels_weight/3.0}
@@ -487,10 +497,14 @@ gt life.
 
 Run simulation 100 times and see how many times accepted'''
 
-Harvard = School(name = 'Harvard University', gpa_weight=2000, sat_weight=1000, sat2_weight=1500, 
-	rec_weight=900, interview_weight=500, ec_levels_weight=500,
-	ec_positions_weight=500,awardlevels_weight=3000, classrank_weight=200,need_blind=True, 
-	employment_weight=100,commservice_weight=1000, otherach_levels_weight=500,otherach_positions_weight = 500
-	,minimumgpa=0,minimumsat=0,minimumsat2=0,minimumclassrank=0,idealsum=5000000)
+Harvard = School(name = 'Harvard University', gpa_weight=2000, 
+				sat_weight=1000, sat2_weight=1500, 
+				rec_weight=900, interview_weight=500, ec_levels_weight=500,
+				ec_positions_weight=500,awardlevels_weight=3000, 
+				classrank_weight=200,need_blind=True, 
+				employment_weight=100,commservice_weight=1000, 
+				otherach_levels_weight=500,otherach_positions_weight = 500
+				,minimumgpa=0,minimumsat=0,minimumsat2=0,
+				minimumclassrank=0,idealsum=5000000)
 	
 main()
