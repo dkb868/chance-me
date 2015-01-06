@@ -30,7 +30,7 @@ class User:
 				otherachlist, otherach_levels, otherach_positions,
 				ec_positions, classrank, finaid, 			
 				international, URM, legacy, ed, firstgen,
-				employment, commservice): 
+				employment_type,employment_hours, commservice): 
 		#externalexams left out
 		self.name = name
 		self.gpa = gpa
@@ -50,7 +50,8 @@ class User:
 		self.legacy = legacy
 		self.ed = ed
 		self.firstgen = firstgen
-		self.employment = employment
+		self.employment_type = employment_type
+		self.employment_hours = employment_hours
 		self.commservice = commservice
 		self.otherach_levels = otherach_levels
 		self.otherach_positions = otherach_positions
@@ -192,15 +193,15 @@ def main():
 	print "Have you had any previous employment?"
 	answer = raw_input("> ")
 	employment_type = []
-	employment_list = []
+	employment_hours = []
 	while answer != ('no' or 'No'):
 		print "Please state the type of employment"
 		print "\n\ta) Full Time \n\tb) Part Time \n\tc) Summer \n\td) None \n\te)"
 		#this actually needs to be a loop and needs to include work hours i.e doube list like EC
-		employment_type = raw_input("> ")
+		employment_type.append(raw_input("> "))
 		print "Please state the amount of hours per week you had to work."
 		print "pass" ##lazy
-		employment_hours = raw_inpu("> ")
+		employment_hours.append(raw_input("> "))
 		print "Do you have any more employment to report?"
 		answer = raw_input("> ")
 		
@@ -257,7 +258,8 @@ class School:
 				rec_weight, interview_weight, ec_levels_weight,
 				ec_positions_weight,awardlevels_weight,
 				classrank_weight,need_blind, 
-				employment_weight,commservice_weight, otherach_levels_weight,
+				employment_type_weight,employment_hours_weight
+				commservice_weight, otherach_levels_weight,
 				otherach_positions_weight,minimumgpa
 				,minimumsat,minimumsat2,minimumclassrank,idealsum): #match_weight
 	
@@ -280,7 +282,8 @@ class School:
 
 		self.classrank_weight = classrank_weight
 		self.need_blind = need_blind #boolean value. need blind or need aware
-		self.employment_weight = employment_weight
+		self.employment_type_weight = employment_type_weight
+		self.employment_hours_weight = employment_hours_weight
 		self.commservice_weight = commservice_weight 
 		self.otherach_levels_weight = otherach_levels_weight #other achievements
 		self.otherach_positions_weight = otherach_positions_weight
@@ -310,33 +313,55 @@ class School:
 						   'c':self.rec_weight/1.3, 
 						   'd':self.rec_weight/1.5, 'e':self.rec_weight/2.0}
 	
-		self.ec_levels_points = {'a':self.ec_levels_weight, 'b':self.ec_levels_weight/1.1, 'c':self.ec_levels_weight/1.3, 
-		'd':self.ec_levels_weight/1.5, 'e':self.ec_levels_weight/2.0,'f':self.ec_levels_weight/3.0}
+		self.ec_levels_points = {'a':self.ec_levels_weight, 
+		'b':self.ec_levels_weight/1.1, 'c':self.ec_levels_weight/1.3, 
+		'd':self.ec_levels_weight/1.5, 'e':self.ec_levels_weight/2.0,
+		'f':self.ec_levels_weight/3.0}
 	
-		self.ec_positions_points = {'a':self.ec_positions_weight, 'b':self.ec_positions_weight/1.1, 'c':self.ec_positions_weight/1.3, 
+		self.ec_positions_points = {'a':self.ec_positions_weight, 
+		'b':self.ec_positions_weight/1.1, 'c':self.ec_positions_weight/1.3, 
 		'd':self.ec_positions_weight/1.5, 'e':self.ec_positions_weight/2.0}
 	
-		self.awardlevels_points ={'a':self.awardlevels_weight, 'b':self.awardlevels_weight/1.1, 'c':self.awardlevels_weight/1.3, 
+		self.awardlevels_points ={'a':self.awardlevels_weight, 
+		'b':self.awardlevels_weight/1.1, 'c':self.awardlevels_weight/1.3, 
 		'd':self.awardlevels_weight/1.5, 'e':self.awardlevels_weight/2.0}
 	
-		self.otherach_positions_points = {'a':self.otherach_positions_weight, 'b':self.otherach_positions_weight/1.1, 'c':self.otherach_positions_weight/1.3, 
-		'd':self.otherach_positions_weight/1.5, 'e':self.otherach_positions_weight/2.0}
+		self.otherach_positions_points = {'a':self.otherach_positions_weight, 
+		'b':self.otherach_positions_weight/1.1, 
+		'c':self.otherach_positions_weight/1.3, 
+		'd':self.otherach_positions_weight/1.5, 
+		'e':self.otherach_positions_weight/2.0}
 		
-		self.otherach_levels_points = {'a':self.otherach_levels_weight, 'b':self.otherach_levels_weight/1.1, 'c':self.otherach_levels_weight/1.3, 
-		'd':self.otherach_levels_weight/1.5, 'e':self.otherach_levels_weight/2.0,'f':self.otherach_levels_weight/3.0}
+		self.otherach_levels_points = {'a':self.otherach_levels_weight,
+		'b':self.otherach_levels_weight/1.1, 
+		'c':self.otherach_levels_weight/1.3, 
+		'd':self.otherach_levels_weight/1.5, 
+		'e':self.otherach_levels_weight/2.0,'f':self.otherach_levels_weight/3.0}
 	
-		self.interview_points = {'a':self.interview_weight, 'b':self.interview_weight/1.1, 'c':self.interview_weight/1.3, 
+		self.interview_points = {'a':self.interview_weight, 
+		'b':self.interview_weight/1.1, 'c':self.interview_weight/1.3, 
 		'd':self.interview_weight/1.5, 'e':self.interview_weight/2.0}
 
 
-		self.classrank_points = {'a':self.classrank_weight, 'b':self.classrank_weight/1.1, 'c':self.classrank_weight/1.3, 
+		self.classrank_points = {'a':self.classrank_weight,
+		'b':self.classrank_weight/1.1, 'c':self.classrank_weight/1.3, 
 		'd':self.classrank_weight/1.5, 'e':self.classrank_weight/2.0}
 
-		self.employment_points = {'a':self.employment_weight, 'b':self.employment_weight/1.1, 'c':self.employment_weight/1.3, 
-		'd':self.employment_weight/1.5, 'e':self.employment_weight/2.0}
-	# employment needs hours added to it so incomplete and will require similar calcs as EC list
+		self.employment_type_points = {'a':self.employment_type_weight,
+		'b':self.employment_type_weight/1.1, 
+		'c':self.employment_type_weight/1.3, 
+		'd':self.employment_type_weight/1.5, 
+		'e':self.employment_type_weight/2.0}
 
-		self.commservice_points =  {'a':self.commservice_weight, 'b':self.commservice_weight/1.1, 'c':self.commservice_weight/1.3, 
+	
+		self.employment_hours_points = {'a':self.employment_hours_weight,
+		'b':self.employment_hours_weight/1.1,
+		'c':self.employment_hours_weight/1.3, 
+		'd':self.employment_hours_weight/1.5,
+		'e':self.employment_hours_weight/2.0}
+
+		self.commservice_points =  {'a':self.commservice_weight,
+		'b':self.commservice_weight/1.1, 'c':self.commservice_weight/1.3, 
 		'd':self.commservice_weight/1.5, 'e':self.commservice_weight/2.0}
 	
 
